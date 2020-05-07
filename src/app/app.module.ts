@@ -3,15 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './components/app-component/app.component';
-import { FirstComponentComponent } from './components/first-component/first-component.component';
-import { ProductComponentComponent } from './components/product-component/product-component.component';
+import { AppComponent } from './main/components/app-component/app.component';
+import { FirstComponentComponent } from './main/components/first-component/first-component.component';
+import { ProductInListComponentComponent } from './product/components/product-in-list-component/product-in-list-component.component';
+import { ProductListComponentComponent } from './product/components/product-list-component/product-list-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FirstComponentComponent,
-    ProductComponentComponent
+    ProductInListComponentComponent,
+    ProductListComponentComponent
   ],
   imports: [
     BrowserModule,

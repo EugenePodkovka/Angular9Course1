@@ -1,0 +1,14 @@
+<div class="mainBlock">
+    <h2>first-component</h2>
+    Name: "{{name}}"<br>
+    DescriptionText: "{{description}}" DescriptionEdit: <input type="text" [(ngModel)]="description" /><br>
+    IsAvailable: <input type="checkbox" [(ngModel)]="isAvailable"/><br>
+    <div *ngIf="isAvailable">
+        Category: {{getProductCategoryString(category)}}<br>
+        <div *ngFor="let productCategory of getProductCategories()">
+            <input type="checkbox" [checked]="productCategory == category" (change)="category = productCategory">{{getProductCategoryString(productCategory)}}
+        </div>
+    </div>
+    <br>
+</div>
+
