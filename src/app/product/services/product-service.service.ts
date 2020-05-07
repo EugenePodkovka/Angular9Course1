@@ -9,23 +9,24 @@ import { CartServiceService } from 'src/app/cart/services/cart-service.service';
 export class ProductServiceService {
 
   constructor(
-    private cartService: CartServiceService
+    private cartService: CartServiceService,
+    private guidHelperService: GuidHelperService
   ) { }
 
   getProducts(): Product[] {
     const products = [
       {
-        id: GuidHelperService.NewGuid(),
+        id: this.guidHelperService.NewGuid(),
         name: 'Product1',
         price: 100
       } as Product,
       {
-        id: GuidHelperService.NewGuid(),
+        id: this.guidHelperService.NewGuid(),
         name: 'Product2',
         price: 200
       } as Product,
       {
-        id: GuidHelperService.NewGuid(),
+        id: this.guidHelperService.NewGuid(),
         name: 'Product3',
         price: 300
       } as Product,
@@ -34,7 +35,7 @@ export class ProductServiceService {
   }
 
   buyProduct(product: Product) {
-    console.log(`The product Name=\"${product.name}\" has been purchased.`);
+    console.log(`The product Name=\"${product.name}\", Id=\"${product.id}\" has been purchased.`);
     this.cartService.addProductToCart(product);
   }
 }

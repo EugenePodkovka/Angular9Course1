@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartServiceService } from '../../services/cart-service.service';
-import { Product } from 'src/app/product/interfaces/Product';
+import { PurchasedProduct } from '../../interfaces/purchased-product';
 
 @Component({
   selector: 'app-cart-open',
@@ -21,12 +21,15 @@ export class CartOpenComponent implements OnInit {
     this.cartService.closeCart();
   }
 
-  getPurchasedProducts(): Product[] {
+  getPurchasedProducts(): PurchasedProduct[] {
     return this.cartService.purchasedProducts;
   }
 
   getTotalCost(): number {
-    return this.cartService.purchasedProducts.reduce((acc, val) => acc + val.price, 0);
+    return this.cartService.purchasedProducts.reduce((acc, val) => acc + val.product.price * val.count, 0);
   }
 
+  removeOneProduct(productId: string){
+    this.cartService.removeOneProductFromCart(productId);
+  }
 }

@@ -7,7 +7,7 @@ export class GuidHelperService {
 
   constructor() { }
 
-  static NewGuid(): string {
+  NewGuid(): string {
     let result: string;
     let i: string;
     let j: number;

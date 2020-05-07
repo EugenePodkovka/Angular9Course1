@@ -2,11 +2,18 @@
     <!-- Modal content-->
     <div class="modal-content">
         <h2>Cart</h2>
-        <ul *ngFor="let product of getPurchasedProducts()">
-            <li>{{product.name}} costs {{product.price}}</li>
-        </ul>
-        Total: {{getTotalCost()}}
-        <br><br>
+        <div *ngIf="getPurchasedProducts().length !== 0">
+            <ul *ngFor="let purchasedProduct of getPurchasedProducts()">
+                <li>{{purchasedProduct.product.name}} costs {{purchasedProduct.product.price}} count {{purchasedProduct.count}}
+                    <input type="button" value="remove" (click)="removeOneProduct(purchasedProduct.product.id)">
+                </li>
+            </ul>
+            Total: {{getTotalCost()}}
+            <br><br>
+        </div>
+        <div *ngIf="getPurchasedProducts().length === 0">
+            <p>Cart is empty</p>
+        </div>
         <input type="button" value="Close" (click)="closeCart()">
         <br><br>
     </div>
