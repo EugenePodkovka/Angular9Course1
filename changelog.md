@@ -1,0 +1,2 @@
+May 7, 2020 - Created the application with FirstComponent. Added test fields to FirstComponent. Added ProductList with products and the Cart.
+May 7, 2020 - 32ac696dcecaadd20687b2cd4ea66191d41dd58a - Remove products from cart (in the cart). Make cart empty if all products were removed.
