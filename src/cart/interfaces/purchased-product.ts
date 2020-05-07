@@ -1,4 +1,4 @@
-import { Product } from 'src/app/product/interfaces/Product';
+import { Product } from 'src/product/interfaces/Product';
 
 export interface PurchasedProduct {
     product: Product;

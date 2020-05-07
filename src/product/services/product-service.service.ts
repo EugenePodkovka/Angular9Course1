@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/app/product/interfaces/Product';
-import { GuidHelperService } from 'src/app/shared/guid-helper/guid-helper.service';
-import { CartServiceService } from 'src/app/cart/services/cart-service.service';
+import { Product } from 'src/product/interfaces/Product';
+import { GuidHelperService } from 'src/shared/guid-helper/guid-helper.service';
+import { CartServiceService } from 'src/cart/services/cart-service.service';
 
 @Injectable({
   providedIn: 'root'
