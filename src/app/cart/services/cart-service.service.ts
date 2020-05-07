@@ -40,4 +40,8 @@ export class CartServiceService {
   closeCart(){
     this.isCartOpen = false;
   }
+
+  getProductsInCartCount(): number{
+    return this.purchasedProducts.reduce((sum, val, index) => sum += val.count, 0);
+  }
 }

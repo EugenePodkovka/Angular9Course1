@@ -9,7 +9,7 @@ import { CartServiceService } from '../../services/cart-service.service';
 export class CartMinimizedComponent implements OnInit {
 
   constructor(
-    public cartService: CartServiceService
+    private cartService: CartServiceService
   ) { }
 
   ngOnInit(): void {
@@ -17,6 +17,10 @@ export class CartMinimizedComponent implements OnInit {
 
   onCartOpen() {
     this.cartService.openCart();
+  }
+
+  getCartProductsCount(): number{
+    return this.cartService.getProductsInCartCount();
   }
 
 }
