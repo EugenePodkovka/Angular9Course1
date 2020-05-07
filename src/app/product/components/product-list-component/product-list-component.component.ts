@@ -8,7 +8,7 @@ import { ProductServiceService } from '../../services/product-service.service';
   styleUrls: ['./product-list-component.component.scss']
 })
 export class ProductListComponentComponent implements OnInit {
-  products: Product[] | undefined;
+  products: Product[] | undefined;  // ? почему undefined
 
   constructor(
     private productServiceService: ProductServiceService

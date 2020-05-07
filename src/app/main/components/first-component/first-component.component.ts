@@ -14,9 +14,9 @@ enum ProductCategory{
 export class FirstComponentComponent implements OnInit {
   name: string | undefined;
   description: string | undefined;
-  price: number | 0;
+  price: number | 0; // 0?
   category: ProductCategory | undefined;
-  isAvailable: boolean | true;
+  isAvailable: boolean | true; // очень необычно выглядит такой тип
 
   constructor() { }
 

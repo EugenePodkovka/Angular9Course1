@@ -26,6 +26,7 @@ export class CartOpenComponent implements OnInit {
   }
 
   getTotalCost(): number {
+    // может быть сервис может предоставить это значение в готовом виде, чтобы не считать его в компоненте?
     return this.cartService.purchasedProducts.reduce((acc, val) => acc + val.product.price * val.count, 0);
   }
 
