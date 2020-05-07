@@ -1,0 +1,13 @@
+<div *ngIf="isCartOpen" class="modal" id="myModal">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <h2>Cart</h2>
+        <ul *ngFor="let product of getPurchasedProducts()">
+            <li>{{product.name}} costs {{product.price}}</li>
+        </ul>
+        Total: {{getTotalCost()}}
+        <br><br>
+        <input type="button" value="Close" (click)="closeCart()">
+        <br><br>
+    </div>
+</div>

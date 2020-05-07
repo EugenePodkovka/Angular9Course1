@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../interfaces/Product';
+import { ProductServiceService } from '../../services/product-service.service';
 
 @Component({
   selector: 'app-product-in-list-component',
@@ -9,13 +10,15 @@ import { Product } from '../../interfaces/Product';
 export class ProductInListComponentComponent implements OnInit {
   @Input() product: Product | undefined;
 
-  constructor() { }
+  constructor(
+    private productService: ProductServiceService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onBuy() {
-    console.log(`The product Name=\\"${this.product.name}\\" has been purchased.`);
+    this.productService.buyProduct(this.product);
   }
 
 }

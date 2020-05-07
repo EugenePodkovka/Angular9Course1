@@ -1,0 +1,10 @@
+<div class="mainBlock">
+    <b>Cart</b> 
+    <div *ngIf="cartService.purchasedProducts.length === 0">Cart is empty</div>
+    <div *ngIf="cartService.purchasedProducts.length !== 0">
+        Products in the cart = {{cartService.purchasedProducts.length}}
+        <input type="button" value="Open" (click)="onCartOpen()">
+    </div>
+    
+    
+</div>
