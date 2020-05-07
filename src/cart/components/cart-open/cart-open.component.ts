@@ -26,7 +26,7 @@ export class CartOpenComponent implements OnInit {
   }
 
   getTotalCost(): number {
-    return this.cartService.purchasedProducts.reduce((acc, val) => acc + val.product.price * val.count, 0);
+    return this.cartService.getProductsTotalCost();
   }
 
   removeOneProduct(productId: string){

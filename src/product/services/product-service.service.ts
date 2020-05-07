@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/product/interfaces/Product';
+import { Product } from 'src/product/interfaces/product';
 import { GuidHelperService } from 'src/shared/guid-helper/guid-helper.service';
 import { CartServiceService } from 'src/cart/services/cart-service.service';
 

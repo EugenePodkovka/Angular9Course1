@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/product/interfaces/Product';
+import { Product } from 'src/product/interfaces/product';
 import { PurchasedProduct } from '../interfaces/purchased-product';
 
 @Injectable({
@@ -43,5 +43,9 @@ export class CartServiceService {
 
   getProductsInCartCount(): number{
     return this.purchasedProducts.reduce((sum, val, index) => sum += val.count, 0);
+  }
+
+  getProductsTotalCost(): number{
+    return this.purchasedProducts.reduce((acc, val) => acc + val.product.price * val.count, 0);
   }
 }
