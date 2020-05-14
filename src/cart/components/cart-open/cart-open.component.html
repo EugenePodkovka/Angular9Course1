@@ -4,8 +4,8 @@
         <h2>Cart</h2>
         <div *ngIf="getPurchasedProducts().length !== 0">
             <ul *ngFor="let purchasedProduct of getPurchasedProducts()">
-                <li>{{purchasedProduct.product.name}} costs {{purchasedProduct.product.price}} count {{purchasedProduct.count}}
-                    <input type="button" value="remove" (click)="removeOneProduct(purchasedProduct.product.id)">
+                <li>{{purchasedProduct.Product.Name}} costs {{purchasedProduct.Product.Price}} count {{purchasedProduct.Count}}
+                    <input type="button" value="remove" (click)="removeOneProduct(purchasedProduct.Product.Id)">
                 </li>
             </ul>
             Total: {{getTotalCost()}}

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartServiceService } from '../../services/cart-service.service';
-import { PurchasedProduct } from '../../interfaces/purchased-product';
+import { PurchasedProduct } from '../../../shared/interfaces/purchased-product';
 
 @Component({
   selector: 'app-cart-open',

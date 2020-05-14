@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Product } from 'src/product/interfaces/product';
-import { GuidHelperService } from 'src/shared/guid-helper/guid-helper.service';
+import { Product } from 'src/shared/interfaces/product';
+import { GuidHelperService } from 'src/shared/services/guid-helper/guid-helper.service';
 import { CartServiceService } from 'src/cart/services/cart-service.service';
 
 @Injectable({
@@ -16,26 +16,26 @@ export class ProductServiceService {
   getProducts(): Product[] {
     const products = [
       {
-        id: this.guidHelperService.NewGuid(),
-        name: 'Product1',
-        price: 100
+        Id: this.guidHelperService.NewGuid(),
+        Name: 'Product1',
+        Price: 100
       } as Product,
       {
-        id: this.guidHelperService.NewGuid(),
-        name: 'Product2',
-        price: 200
+        Id: this.guidHelperService.NewGuid(),
+        Name: 'Product2',
+        Price: 200
       } as Product,
       {
-        id: this.guidHelperService.NewGuid(),
-        name: 'Product3',
-        price: 300
+        Id: this.guidHelperService.NewGuid(),
+        Name: 'Product3',
+        Price: 300
       } as Product,
     ];
     return products;
   }
 
   buyProduct(product: Product) {
-    console.log(`The product Name=\"${product.name}\", Id=\"${product.id}\" has been purchased.`);
+    console.log(`The product Name=\"${product.Name}\", Id=\"${product.Id}\" has been purchased.`);
     this.cartService.addProductToCart(product);
   }
 }
