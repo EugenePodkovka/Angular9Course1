@@ -1,7 +1,12 @@
 <h2>Product list</h2>
 
 <div>
-    <div *ngFor="let product of products">
-        <app-product-in-list-component [product]="product"></app-product-in-list-component>
+    <div *ngFor="let productInStock of productsInStock">
+        <app-product-in-list-component 
+            [product]="productInStock.Product" 
+            [isProductAvailable]="productInStock.Remaining > 0" 
+            [productRemaining]="productInStock.Remaining"
+            (productPurchased)="onProductPurchased($event)"
+        ></app-product-in-list-component>
     </div>
 </div>

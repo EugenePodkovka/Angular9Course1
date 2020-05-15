@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../shared/interfaces/product';
 import { ProductServiceService } from '../../services/product-service.service';
+import { ProductInStock } from 'src/shared/interfaces/product-in-stock';
+import { Product } from 'src/shared/interfaces/product';
 
 @Component({
   selector: 'app-product-list-component',
@@ -8,7 +9,7 @@ import { ProductServiceService } from '../../services/product-service.service';
   styleUrls: ['./product-list-component.component.scss']
 })
 export class ProductListComponentComponent implements OnInit {
-  products: Product[];
+  productsInStock: ProductInStock[];
 
   constructor(
     private productServiceService: ProductServiceService
@@ -19,7 +20,11 @@ export class ProductListComponentComponent implements OnInit {
   }
 
   initializeProducts() {
-    this.products = this.productServiceService.getProducts();
+    this.productsInStock = this.productServiceService.getProductsInStock();
+  }
+
+  onProductPurchased(product: Product){
+    this.productServiceService.buyProduct(product);
   }
 
 }

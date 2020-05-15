@@ -1,24 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../../../shared/interfaces/product';
-import { ProductServiceService } from '../../services/product-service.service';
 
 @Component({
   selector: 'app-product-in-list-component',
   templateUrl: './product-in-list-component.component.html',
   styleUrls: ['./product-in-list-component.component.scss']
 })
-export class ProductInListComponentComponent implements OnInit {
+export class ProductInListComponentComponent {
   @Input() product: Product | undefined;
-
-  constructor(
-    private productService: ProductServiceService
-  ) { }
-
-  ngOnInit(): void {
-  }
+  @Input() isProductAvailable: boolean;
+  @Input() productRemaining: number;
+  @Output() productPurchased: EventEmitter<Product> = new EventEmitter<Product>();
 
   onBuy() {
-    this.productService.buyProduct(this.product);
+    this.productPurchased.emit(this.product);
   }
-
 }
