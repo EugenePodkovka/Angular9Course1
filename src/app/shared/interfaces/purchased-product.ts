@@ -1,4 +1,4 @@
-import { Product } from 'src/shared/interfaces/product';
+import { Product } from './product';
 
 export interface PurchasedProduct {
     Id: string;
