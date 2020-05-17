@@ -22,10 +22,6 @@ export class CartOpenComponent {
     return this.cartService.purchasedProducts;
   }
 
-  getTotalCost(): number {
-    return this.cartService.getProductsTotalCost();
-  }
-
   removeOneProduct(productId: string) {
     this.cartService.removeOneProductFromCart(productId);
   }
