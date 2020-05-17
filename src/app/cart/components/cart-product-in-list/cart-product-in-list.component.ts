@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { PurchasedProduct } from 'src/app/shared/interfaces/purchased-product';
 
 @Component({
   selector: 'app-cart-product-in-list',
   templateUrl: './cart-product-in-list.component.html',
-  styleUrls: ['./cart-product-in-list.component.scss']
+  styleUrls: ['./cart-product-in-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartProductInListComponent {
   @Input() purchasedProduct: PurchasedProduct;
