@@ -1,2 +1,2 @@
-May 7, 2020 - Created the application with FirstComponent. Added test fields to FirstComponent. Added ProductList with products and the Cart.
-May 7, 2020 - 32ac696dcecaadd20687b2cd4ea66191d41dd58a - Remove products from cart (in the cart). Make cart empty if all products were removed.
+May 7, 2020 - "Task 1. Introduction" was completed.
+May 17, 2020 - "Task 2. Components" was completed. All subtasks were done. The additional functionality is changing the background of the "Add to cart" buttons on the main product list onmouseover.
