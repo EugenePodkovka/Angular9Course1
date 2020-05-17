@@ -12,8 +12,17 @@ export class ProductInListComponentComponent {
   @Input() isProductAvailable: boolean;
   @Input() productRemaining: number;
   @Output() productPurchased: EventEmitter<Product> = new EventEmitter<Product>();
+  isBuyBtnHover = false;
 
   onBuy() {
     this.productPurchased.emit(this.product);
+  }
+
+  onBuyBtnMouseOver(){
+    this.isBuyBtnHover = true;
+  }
+
+  onBuyBtnMouseOut(){
+    this.isBuyBtnHover = false;
   }
 }

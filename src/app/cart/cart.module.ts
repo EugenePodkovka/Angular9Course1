@@ -5,6 +5,7 @@ import { CartMinimizedComponent } from './components/cart-minimized/cart-minimiz
 import { CartOpenComponent } from './components/cart-open/cart-open.component';
 import { CartProductListComponent } from './components/cart-product-list/cart-product-list.component';
 import { CartProductInListComponent } from './components/cart-product-in-list/cart-product-in-list.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CartProductInListComponent } from './components/cart-product-in-list/ca
     CartProductInListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     CartMinimizedComponent,
