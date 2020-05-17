@@ -3,13 +3,11 @@
     <div class="modal-content">
         <h2>Cart</h2>
         <div *ngIf="getPurchasedProducts().length !== 0">
-            <ul *ngFor="let purchasedProduct of getPurchasedProducts()">
-                <li>{{purchasedProduct.Product.Name}} costs {{purchasedProduct.Product.Price}} count {{purchasedProduct.Count}}
-                    <input type="button" value="remove" (click)="removeOneProduct(purchasedProduct.Product.Id)">
-                </li>
-            </ul>
-            Total: {{getTotalCost()}}
-            <br><br>
+            <app-cart-product-list 
+            [purchasedProducts]="getPurchasedProducts()" [totalCost]="getTotalCost()" 
+            (removeProduct)="removeOneProduct($event)"
+            (addProduct)="addOneProduct($event)"
+            (removeAllProducts)="removeAllOneProduct($event)"></app-cart-product-list>
         </div>
         <div *ngIf="getPurchasedProducts().length === 0">
             <p>Cart is empty</p>
