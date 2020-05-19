@@ -23,7 +23,7 @@ export class CartProductListComponent {
   }
 
   onAddProduct(productId: string){
-    this.addProduct.emit(productId)
+    this.addProduct.emit(productId);
   }
 
   onRemoveAllProducts(productId: string){

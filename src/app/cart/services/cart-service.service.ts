@@ -34,7 +34,7 @@ export class CartServiceService {
   }
 
   removeAllOneProduct(productId: string) {
-    this.purchasedProducts = this.purchasedProducts.filter(pp => pp.Product.Id !== productId)
+    this.purchasedProducts = this.purchasedProducts.filter(pp => pp.Product.Id !== productId);
   }
 
   addOneProduct(productId: string) {
