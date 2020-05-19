@@ -10,24 +10,24 @@ import { CartService } from '../../services/cart.service';
 })
 export class CartProductListComponent {
   @Input() purchasedProducts: PurchasedProduct[];
-  @Output() decreaseProductCount: EventEmitter<string> = new EventEmitter<string>();
-  @Output() increaseProductCount: EventEmitter<string> = new EventEmitter<string>();
-  @Output() removeAllSingleProduct: EventEmitter<string> = new EventEmitter<string>();
+  @Output() decreaseQuantity: EventEmitter<string> = new EventEmitter<string>();
+  @Output() increaseQuantity: EventEmitter<string> = new EventEmitter<string>();
+  @Output() removeProduct: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private cartService: CartService
   ) { }
 
-  onDecreaseProductCountClick(productId: string){
-    this.decreaseProductCount.emit(productId);
+  onDecreaseQuantityClick(productId: string){
+    this.decreaseQuantity.emit(productId);
   }
 
-  onIncreaseProductCountClick(productId: string){
-    this.increaseProductCount.emit(productId);
+  onIncreaseQuantityClick(productId: string){
+    this.increaseQuantity.emit(productId);
   }
 
-  onRemoveAllSingleProductClick(productId: string){
-    this.removeAllSingleProduct.emit(productId);
+  onRemoveProductClick(productId: string){
+    this.removeProduct.emit(productId);
   }
 
   getTotalCost(): number {

@@ -1,18 +1,18 @@
-<div *ngIf="isCartOpen" class="modal" id="myModal">
-    <!-- Modal content-->
+<div *ngIf="isCartOpen" class="modal">
     <div class="modal-content">
         <h2>Cart</h2>
         <div *ngIf="getPurchasedProducts().length !== 0">
             <app-cart-product-list 
             [purchasedProducts]="getPurchasedProducts()"
-            (decreaseProductCount)="removeOneProduct($event)"
-            (increaseProductCount)="addOneProduct($event)"
-            (removeAllSingleProduct)="removeAllOneProduct($event)"></app-cart-product-list>
+            (decreaseQuantity)="decreaseQuantity($event)"
+            (increaseQuantity)="increaseQuantity($event)"
+            (removeProduct)="removeProduct($event)"></app-cart-product-list>
         </div>
         <div *ngIf="getPurchasedProducts().length === 0">
             <p>Cart is empty</p>
         </div>
-        <input type="button" value="Close" (click)="closeCart()">
+        <input type="button" class="horizontal" value="Clear cart" (click)="onRemoveAllProductsClick()">
+        <input type="button" class="horizontal" value="Close" (click)="onCloseCartClick()">
         <br><br>
     </div>
 </div>

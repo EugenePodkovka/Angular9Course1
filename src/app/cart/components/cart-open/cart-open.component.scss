@@ -23,15 +23,19 @@
   
   /* The Close Button */
   .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+    color: black;
+    float: left;
     font-weight: bold;
   }
   
   .close:hover,
   .close:focus {
-    color: black;
+    background-color: burlywood;
     text-decoration: none;
     cursor: pointer;
   }
+
+.horizontal {
+  display: inline-block;
+  margin-right: 10px;
+}

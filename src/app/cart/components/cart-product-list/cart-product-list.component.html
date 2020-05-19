@@ -2,9 +2,9 @@
     <ul *ngFor="let purchasedProduct of purchasedProducts">
         <li><app-cart-product-in-list 
             [purchasedProduct]="purchasedProduct" 
-            (increaseProductCount)="onIncreaseProductCountClick($event)"
-            (decreaseProductCount)="onDecreaseProductCountClick($event)"
-            (removeAllSingleProduct)="onRemoveAllSingleProductClick($event)"></app-cart-product-in-list>
+            (increaseQuantity)="onIncreaseQuantityClick($event)"
+            (decreaseQuantity)="onDecreaseQuantityClick($event)"
+            (removeProduct)="onRemoveProductClick($event)"></app-cart-product-in-list>
         </li>
     </ul>
     Total products: {{getTotalProducts()}}

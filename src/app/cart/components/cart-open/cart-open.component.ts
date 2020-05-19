@@ -14,23 +14,27 @@ export class CartOpenComponent {
     private cartService: CartService
   ) { }
 
-  closeCart(){
+  onCloseCartClick() {
     this.cartService.closeCart();
+  }
+
+  onRemoveAllProductsClick() {
+    this.cartService.removeAllProducts();
   }
 
   getPurchasedProducts(): PurchasedProduct[] {
     return this.cartService.purchasedProducts;
   }
 
-  removeOneProduct(productId: string) {
+  decreaseQuantity(productId: string) {
     this.cartService.decreaseQuantity(productId);
   }
 
-  addOneProduct(productId: string) {
+  increaseQuantity(productId: string) {
     this.cartService.increaseQuantity(productId);
   }
 
-  removeAllOneProduct(productId: string) {
+  removeProduct(productId: string) {
     this.cartService.removeProduct(productId);
   }
 }

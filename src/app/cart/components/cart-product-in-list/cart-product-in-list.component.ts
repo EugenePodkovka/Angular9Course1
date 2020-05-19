@@ -9,20 +9,20 @@ import { PurchasedProduct } from 'src/app/shared/interfaces/purchased-product';
 })
 export class CartProductInListComponent {
   @Input() purchasedProduct: PurchasedProduct;
-  @Output() decreaseProductCount: EventEmitter<string> = new EventEmitter<string>();
-  @Output() removeAllSingleProduct: EventEmitter<string> = new EventEmitter<string>();
-  @Output() increaseProductCount: EventEmitter<string> = new EventEmitter<string>();
+  @Output() increaseQuantity: EventEmitter<string> = new EventEmitter<string>();
+  @Output() decreaseQuantity: EventEmitter<string> = new EventEmitter<string>();
+  @Output() removeProduct: EventEmitter<string> = new EventEmitter<string>();
 
-  onDecreaseProductCountClick() {
-    this.decreaseProductCount.emit(this.purchasedProduct.Product.Id);
+  onIncreaseQuantityClick() {
+    this.increaseQuantity.emit(this.purchasedProduct.Product.Id);
   }
 
-  onIncreaseProductCountClick() {
-    this.increaseProductCount.emit(this.purchasedProduct.Product.Id);
+  onDecreaseQuantityClick() {
+    this.decreaseQuantity.emit(this.purchasedProduct.Product.Id);
   }
 
-  onRemoveAllSingleProductClick() {
-    this.removeAllSingleProduct.emit(this.purchasedProduct.Product.Id);
+  onRemoveProductClick() {
+    this.removeProduct.emit(this.purchasedProduct.Product.Id);
   }
 
 }

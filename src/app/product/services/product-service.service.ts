@@ -49,6 +49,6 @@ export class ProductServiceService {
 
   buyProduct(product: Product) {
     console.log(`The product Name=\"${product.Name}\", Id=\"${product.Id}\" has been purchased.`);
-    this.cartService.addProduct(product, 2);
+    this.cartService.addProduct(product);
   }
 }
