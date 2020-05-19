@@ -1,6 +1,6 @@
 <div class='productInLineText' appDynamicBackground>{{purchasedProduct.Product.Name}} costs {{purchasedProduct.Product.Price}} count {{purchasedProduct.Count}}&nbsp;</div>
 <div class='productInLineText'>
-    <input type="button" value="+" (click)="onAddClick()">&nbsp;
-    <input type="button" value="-" (click)="onRemoveClick()">&nbsp;
-    <input type="button" value="remove all" (click)="onRemoveAllClick()">
+    <input type="button" value="+" (click)="onIncreaseProductCountClick()">&nbsp;
+    <input type="button" value="-" (click)="onDecreaseProductCountClick()">&nbsp;
+    <input type="button" value="remove all" (click)="onRemoveAllSingleProductClick()">
 </div>

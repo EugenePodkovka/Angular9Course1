@@ -5,9 +5,9 @@
         <div *ngIf="getPurchasedProducts().length !== 0">
             <app-cart-product-list 
             [purchasedProducts]="getPurchasedProducts()"
-            (removeProduct)="removeOneProduct($event)"
-            (addProduct)="addOneProduct($event)"
-            (removeAllProducts)="removeAllOneProduct($event)"></app-cart-product-list>
+            (decreaseProductCount)="removeOneProduct($event)"
+            (increaseProductCount)="addOneProduct($event)"
+            (removeAllSingleProduct)="removeAllOneProduct($event)"></app-cart-product-list>
         </div>
         <div *ngIf="getPurchasedProducts().length === 0">
             <p>Cart is empty</p>

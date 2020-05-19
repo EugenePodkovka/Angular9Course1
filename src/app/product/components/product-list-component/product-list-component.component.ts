@@ -19,12 +19,12 @@ export class ProductListComponentComponent implements OnInit {
     this.initializeProducts();
   }
 
-  initializeProducts() {
-    this.productsInStock = this.productServiceService.getProductsInStock();
-  }
-
   onProductPurchased(product: Product){
     this.productServiceService.buyProduct(product);
+  }
+
+  private initializeProducts() {
+    this.productsInStock = this.productServiceService.getProductsInStock();
   }
 
 }
