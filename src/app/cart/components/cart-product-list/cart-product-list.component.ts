@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { PurchasedProduct } from 'src/app/shared/interfaces/purchased-product';
-import { CartServiceService } from '../../services/cart-service.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-product-list',
@@ -15,7 +15,7 @@ export class CartProductListComponent {
   @Output() removeAllSingleProduct: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
-    private cartService: CartServiceService
+    private cartService: CartService
   ) { }
 
   onDecreaseProductCountClick(productId: string){

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CartServiceService } from '../../services/cart-service.service';
+import { CartService } from '../../services/cart.service';
 import { PurchasedProduct } from '../../../shared/interfaces/purchased-product';
 
 @Component({
@@ -11,7 +11,7 @@ export class CartOpenComponent {
   @Input() isCartOpen: boolean | false;
 
   constructor(
-    private cartService: CartServiceService
+    private cartService: CartService
   ) { }
 
   closeCart(){
@@ -23,14 +23,14 @@ export class CartOpenComponent {
   }
 
   removeOneProduct(productId: string) {
-    this.cartService.removeOneProductFromCart(productId);
+    this.cartService.decreaseQuantity(productId);
   }
 
   addOneProduct(productId: string) {
-    this.cartService.addOneProduct(productId);
+    this.cartService.increaseQuantity(productId);
   }
 
   removeAllOneProduct(productId: string) {
-    this.cartService.removeAllOneProduct(productId);
+    this.cartService.removeProduct(productId);
   }
 }

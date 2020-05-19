@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { CartServiceService } from '../cart/services/cart-service.service';
+import { CartService } from '../cart/services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   @ViewChild('appTitle', {static: true}) appTitleHeader: ElementRef;
 
   constructor(
-    public cartService: CartServiceService
+    public cartService: CartService
   ){
   }
 

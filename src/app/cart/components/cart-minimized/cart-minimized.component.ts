@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartServiceService } from '../../services/cart-service.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-cart-minimized',
@@ -9,7 +9,7 @@ import { CartServiceService } from '../../services/cart-service.service';
 export class CartMinimizedComponent implements OnInit {
 
   constructor(
-    private cartService: CartServiceService
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {

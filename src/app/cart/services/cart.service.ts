@@ -5,26 +5,36 @@ import { PurchasedProduct } from '../../shared/interfaces/purchased-product';
 @Injectable({
   providedIn: 'root'
 })
-export class CartServiceService {
+export class CartService {
   purchasedProducts: PurchasedProduct[];
+  totalQuantity: number;
+  totalSum: number;
   isCartOpen: boolean | false;
 
   constructor() {
     this.purchasedProducts = [];
   }
 
-  addProductToCart(productToAdd: Product) {
+  addProduct(productToAdd: Product, quantity: number = 1) {
     if (this.purchasedProducts.findIndex(pp => pp.Product.Id === productToAdd.Id) === -1){
       this.purchasedProducts.push({
         Product: productToAdd,
-        Count: 1
+        Count: quantity
       } as PurchasedProduct);
     }else{
-      this.purchasedProducts.find(pp => pp.Product.Id === productToAdd.Id).Count += 1;
+      this.purchasedProducts.find(pp => pp.Product.Id === productToAdd.Id).Count += quantity;
     }
   }
 
-  removeOneProductFromCart(productId: string) {
+  removeProduct(productId: string) {
+    this.purchasedProducts = this.purchasedProducts.filter(pp => pp.Product.Id !== productId);
+  }
+
+  increaseQuantity(productId: string) {
+    this.purchasedProducts.find(pp => pp.Product.Id === productId).Count += 1;
+  }
+
+  decreaseQuantity(productId: string) {
     const productToRemove = this.purchasedProducts.find(pp => pp.Product.Id === productId);
     if (productToRemove.Count > 1){
       productToRemove.Count -= 1;
@@ -33,12 +43,8 @@ export class CartServiceService {
     }
   }
 
-  removeAllOneProduct(productId: string) {
-    this.purchasedProducts = this.purchasedProducts.filter(pp => pp.Product.Id !== productId);
-  }
-
-  addOneProduct(productId: string) {
-    this.purchasedProducts.find(pp => pp.Product.Id === productId).Count += 1;
+  removeAllProducts() {
+    this.purchasedProducts = [];
   }
 
   openCart(){
@@ -55,5 +61,10 @@ export class CartServiceService {
 
   getProductsTotalCost(): number {
     return this.purchasedProducts.reduce((acc, val) => acc + val.Product.Price * val.Count, 0);
+  }
+
+  updateCartData() {
+    this.totalQuantity = this.getProductsInCartCount();
+    this.totalSum = this.getProductsTotalCost();
   }
 }

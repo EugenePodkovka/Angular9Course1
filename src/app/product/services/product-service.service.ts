@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
 import { GuidHelperService } from 'src/app/shared/services/guid-helper/guid-helper.service';
-import { CartServiceService } from 'src/app/cart/services/cart-service.service';
+import { CartService } from 'src/app/cart/services/cart.service';
 import { ProductInStock } from 'src/app/shared/interfaces/product-in-stock';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { ProductInStock } from 'src/app/shared/interfaces/product-in-stock';
 export class ProductServiceService {
 
   constructor(
-    private cartService: CartServiceService,
+    private cartService: CartService,
     private guidHelperService: GuidHelperService
   ) { }
 
@@ -49,6 +49,6 @@ export class ProductServiceService {
 
   buyProduct(product: Product) {
     console.log(`The product Name=\"${product.Name}\", Id=\"${product.Id}\" has been purchased.`);
-    this.cartService.addProductToCart(product);
+    this.cartService.addProduct(product, 2);
   }
 }
