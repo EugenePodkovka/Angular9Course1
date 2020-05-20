@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/core/services';
 
 enum ProductCategory{
   Toys,
@@ -18,8 +19,6 @@ export class FirstComponentComponent implements OnInit {
   category: ProductCategory | undefined;
   isAvailable: boolean | true;
 
-  constructor() { }
-
   ngOnInit(): void {
     this.name = 'First component name';
     this.description = 'First component description';
@@ -28,20 +27,34 @@ export class FirstComponentComponent implements OnInit {
     this.isAvailable = true;
   }
 
-  setPrice(){
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
+
+  onTestLocalStorageBtnClick() {
+    this.localStorageService.setItem('test', {val: 'testStringObj'});
+    this.localStorageService.setItem('test1', 111);
+    this.localStorageService.setItem('test2', 'testString');
+
+    console.log(this.localStorageService.getItem('test'));
+    console.log(this.localStorageService.getItem('test1'));
+    console.log(this.localStorageService.getItem('test2'));
+  }
+
+  onBtnClick() {
+    this.category = ProductCategory.Drink;
+    console.log(this.category);
+  }
+
+  setPrice() {
     return 10;
   }
 
-  getProductCategories(){
+  getProductCategories() {
     return Object.values(ProductCategory).filter((type) => typeof(type) === 'number');
   }
 
-  getProductCategoryString(catValue){
+  getProductCategoryString(catValue) {
     return ProductCategory[catValue];
-  }
-
-  onBtnClick(){
-    this.category = ProductCategory.Drink;
-    console.log(this.category);
   }
 }

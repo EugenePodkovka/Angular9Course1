@@ -6,6 +6,7 @@ import { AppComponent } from './app-component/app.component';
 import { CartModule } from './cart/cart.module';
 import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
+import { LocalStorageService } from './core/services';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,9 @@ import { SharedModule } from './shared/shared.module';
     ProductModule,
     SharedModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: LocalStorageService, useClass: LocalStorageService }
+  ]
 })
 export class AppModule { }
