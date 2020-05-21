@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalStorageService, ConstantsService, csInstance } from 'src/app/core/services';
+import { Component, OnInit, Inject } from '@angular/core';
+import { LocalStorageService, ConstantsService, csInstance, RandomStrLen, GeneratorFactory, GeneratorService } from 'src/app/core/services';
 
 enum ProductCategory{
   Toys,
@@ -12,7 +12,8 @@ enum ProductCategory{
   templateUrl: './first-component.component.html',
   styleUrls: ['./first-component.component.scss'],
   providers: [
-    { provide: ConstantsService, useValue: csInstance}
+    { provide: ConstantsService, useValue: csInstance },
+    { provide: RandomStrLen, useFactory: GeneratorFactory(5), deps: [GeneratorService] }
   ]
 })
 export class FirstComponentComponent implements OnInit {
@@ -21,9 +22,10 @@ export class FirstComponentComponent implements OnInit {
   price: number | 0;
   category: ProductCategory;
   isAvailable = true;
-  constantContent: object;
+  constantContent: {App: string, Ver: string};
 
   constructor(
+    @Inject(RandomStrLen) public randomStrLen: string,
     private localStorageService: LocalStorageService,
     private csIn: ConstantsService
   ) { }
