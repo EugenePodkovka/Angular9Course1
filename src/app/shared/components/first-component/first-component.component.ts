@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'src/app/core/services';
+import { LocalStorageService, ConstantsService, csInstance } from 'src/app/core/services';
 
 enum ProductCategory{
   Toys,
@@ -10,26 +10,31 @@ enum ProductCategory{
 @Component({
   selector: 'app-first-component',
   templateUrl: './first-component.component.html',
-  styleUrls: ['./first-component.component.scss']
+  styleUrls: ['./first-component.component.scss'],
+  providers: [
+    { provide: ConstantsService, useValue: csInstance}
+  ]
 })
 export class FirstComponentComponent implements OnInit {
-  name: string | undefined;
-  description: string | undefined;
+  name: string;
+  description: string;
   price: number | 0;
-  category: ProductCategory | undefined;
-  isAvailable: boolean | true;
+  category: ProductCategory;
+  isAvailable = true;
+  constantContent: object;
+
+  constructor(
+    private localStorageService: LocalStorageService,
+    private csIn: ConstantsService
+  ) { }
 
   ngOnInit(): void {
     this.name = 'First component name';
     this.description = 'First component description';
     this.price = this.setPrice();
     this.category = ProductCategory.Food;
-    this.isAvailable = true;
+    this.constantContent = this.csIn.getAllData();
   }
-
-  constructor(
-    private localStorageService: LocalStorageService
-  ) { }
 
   onTestLocalStorageBtnClick() {
     this.localStorageService.setItem('test', {val: 'testStringObj'});
