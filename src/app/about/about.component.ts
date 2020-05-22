@@ -12,6 +12,7 @@ import { RandomStrLen, LocalStorageService, ConstantsService, csInstance, Genera
 })
 export class AboutComponent implements OnInit {
   constantContent: {App: string, Ver: string};
+  testLocalStorageVal = '';
 
   constructor(
     @Inject(RandomStrLen) public randomStrLen: string,
@@ -31,6 +32,8 @@ export class AboutComponent implements OnInit {
     console.log(this.localStorageService.getItem('test'));
     console.log(this.localStorageService.getItem('test1'));
     console.log(this.localStorageService.getItem('test2'));
+
+    this.testLocalStorageVal = this.localStorageService.getItem('test');
   }
 
 }
