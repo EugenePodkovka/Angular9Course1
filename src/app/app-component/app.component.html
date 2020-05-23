@@ -1,8 +1,23 @@
-<h1 #appTitle></h1>
-<app-about></app-about>
-<br>
-<app-cart-minimized></app-cart-minimized>
-<br>
-<app-product-list-component></app-product-list-component>
+<ng-container>
+    <mat-toolbar color="primary" class="example-header">
+        <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+        <h1 #appTitle></h1>
+        <app-cart-minimized></app-cart-minimized>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
+            <mat-nav-list class="sidenav-list">
+                <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        
+        <mat-sidenav-content>
+            <app-about></app-about>
+            <app-product-list-component></app-product-list-component>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <mat-toolbar color="primary" class="example-footer">Footer</mat-toolbar>
+</ng-container>
 <app-cart-open [isCartOpen]="cartService.isCartOpen"></app-cart-open>
-<br><br>

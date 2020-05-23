@@ -1,8 +1,9 @@
-<div class="mainBlock">
-    <b>Cart</b> 
-    <div *ngIf="getCartProductsCount() === 0">Cart is empty</div>
-    <div *ngIf="getCartProductsCount() !== 0">
-        Products in the cart = {{getCartProductsCount()}}
-        <input type="button" value="Open" (click)="onCartOpen()">
-    </div>
-</div>
+<mat-card class="matCardCart">
+    <mat-card-content>
+        <div *ngIf="getCartProductsCount() === 0">Cart is empty</div>
+        <div *ngIf="getCartProductsCount() !== 0">
+            Products in the cart = {{getCartProductsCount()}}
+            <input type="button" value="Open" (click)="onCartOpen()">
+        </div>
+    </mat-card-content>
+</mat-card>
