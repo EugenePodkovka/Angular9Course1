@@ -7,6 +7,7 @@ import { CartProductListComponent } from './components/cart-product-list/cart-pr
 import { CartProductInListComponent } from './components/cart-product-in-list/cart-product-in-list.component';
 import { SharedModule } from '../shared/shared.module';
 
+
 @NgModule({
   declarations: [
     CartMinimizedComponent,

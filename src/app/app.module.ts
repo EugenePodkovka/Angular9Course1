@@ -10,6 +10,7 @@ import { LocalStorageService } from './core/services';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [
     AppComponent,

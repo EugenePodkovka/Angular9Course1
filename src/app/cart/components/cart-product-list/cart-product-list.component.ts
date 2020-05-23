@@ -14,6 +14,9 @@ export class CartProductListComponent {
   @Output() increaseQuantity: EventEmitter<string> = new EventEmitter<string>();
   @Output() removeProduct: EventEmitter<string> = new EventEmitter<string>();
 
+  isDescSorting = true;
+  selectedSorting: string;
+
   constructor(
     private cartService: CartService
   ) { }
@@ -39,6 +42,10 @@ export class CartProductListComponent {
   }
 
   getProductFields(): string[] {
-    return Object.keys( {} as PurchasedProduct );
+    return Object.keys( this.purchasedProducts[0]?.Product );
+  }
+
+  getResultSorting() {
+    return 'Product.' + this.selectedSorting;
   }
 }

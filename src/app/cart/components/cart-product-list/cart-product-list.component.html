@@ -1,10 +1,21 @@
 <div>
-    <ul *ngFor="let purchasedProduct of purchasedProducts">
-        <li><app-cart-product-in-list 
-            [purchasedProduct]="purchasedProduct" 
-            (increaseQuantity)="onIncreaseQuantityClick($event)"
-            (decreaseQuantity)="onDecreaseQuantityClick($event)"
-            (removeProduct)="onRemoveProductClick($event)"></app-cart-product-in-list>
+    <section>
+        <mat-form-field>
+            <mat-label>Sort by</mat-label>
+            <mat-select [(value)]="selectedSorting">
+                <mat-option *ngFor="let productField of getProductFields()" [value]="productField">
+                    {{productField}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-checkbox class="basic-margin" [(ngModel)]="isDescSorting">Desc</mat-checkbox>
+    </section>
+    <ul *ngFor="let purchasedProduct of purchasedProducts|orderBy:getResultSorting():isDescSorting">
+        <li>
+            <app-cart-product-in-list [purchasedProduct]="purchasedProduct"
+                (increaseQuantity)="onIncreaseQuantityClick($event)"
+                (decreaseQuantity)="onDecreaseQuantityClick($event)" (removeProduct)="onRemoveProductClick($event)">
+            </app-cart-product-in-list>
         </li>
     </ul>
     Total products: {{getTotalProducts()}}
