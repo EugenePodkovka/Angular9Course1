@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { CartService } from '../cart/services/cart.service';
 
 @Component({
@@ -18,5 +19,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.appTitleHeader.nativeElement.textContent = 'Angular 9 applition';
+  }
+
+  onActivate($event: any, routerOutlet: RouterOutlet) {
+    console.log('Activated component', $event, routerOutlet);
+  }
+
+  onDeactivate($event: any, routerOutlet: RouterOutlet) {
+    console.log('Deactivated component', $event, routerOutlet);
   }
 }

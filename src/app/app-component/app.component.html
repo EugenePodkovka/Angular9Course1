@@ -8,13 +8,17 @@
     <mat-sidenav-container class="example-container">
         <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
             <mat-nav-list class="sidenav-list">
-                <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+                <a mat-list-item routerLink="/home" routerLinkActive="active">Product list</a>
+                <a mat-list-item routerLink="/about" routerLinkActive="active">About</a>
             </mat-nav-list>
         </mat-sidenav>
         
         <mat-sidenav-content>
-            <app-about></app-about>
-            <app-product-list-component></app-product-list-component>
+            <router-outlet
+                #routerOutlet="outlet"
+                (activate)='onActivate($event, routerOutlet)'
+                (deactivate)='onDeactivate($event, routerOutlet)'>
+            </router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
 
