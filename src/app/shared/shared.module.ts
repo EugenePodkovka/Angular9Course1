@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FirstComponentComponent } from './components/first-component/first-component.component';
 import { DynamicBackgroundDirective } from './directives/dynamic-background.directive';
 import { ClickBorderDirective } from './directives/click-border.directive';
+import { OrderByPipe } from './pipes';
 
 
 
@@ -11,7 +12,8 @@ import { ClickBorderDirective } from './directives/click-border.directive';
   declarations: [
     FirstComponentComponent,
     DynamicBackgroundDirective,
-    ClickBorderDirective
+    ClickBorderDirective,
+    OrderByPipe
   ],
   imports: [
     CommonModule,

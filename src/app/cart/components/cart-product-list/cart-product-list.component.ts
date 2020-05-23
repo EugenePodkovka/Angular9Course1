@@ -37,4 +37,8 @@ export class CartProductListComponent {
   getTotalProducts(): number {
     return this.cartService.getProductsInCartCount();
   }
+
+  getProductFields(): string[] {
+    return Object.keys( {} as PurchasedProduct );
+  }
 }
