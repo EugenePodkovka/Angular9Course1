@@ -33,7 +33,8 @@ const mat = [
     ClickBorderDirective,
     FormsModule,
     mat,
-    OrderByPipe
+    OrderByPipe,
+    CommonModule
   ]
 })
 export class SharedModule { }

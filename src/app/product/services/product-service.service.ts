@@ -24,7 +24,7 @@ export class ProductServiceService {
       Product: {
         Id: this.guidHelperService.NewGuid(),
         Name: 'Product1',
-        Price: 100
+        Price: 200
       } as Product,
       Remaining: 1
     } as ProductInStock,
@@ -33,7 +33,7 @@ export class ProductServiceService {
       Product: {
         Id: this.guidHelperService.NewGuid(),
         Name: 'Product2',
-        Price: 200
+        Price: 100
       } as Product,
       Remaining: 2
     } as ProductInStock,
