@@ -41,6 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { CardMainNavPanelComponent } from './components/card-main-nav-panel/card-main-nav-panel.component';
+import { MainContentCardComponent } from './components/main-content-card/main-content-card.component';
 
 const mat = [
   MatAutocompleteModule,
@@ -79,29 +81,31 @@ const mat = [
   MatTooltipModule,
   MatTreeModule
 ];
+const declExp = [
+  CardMainNavPanelComponent,
+  OrderByPipe,
+  ClickBorderDirective,
+  DynamicBackgroundDirective,
+  FirstComponentComponent,
+  MainContentCardComponent
+];
+const impExp = [
+  CommonModule,
+  FormsModule,
+  RouterModule,
+  mat
+];
 
 @NgModule({
   declarations: [
-    FirstComponentComponent,
-    DynamicBackgroundDirective,
-    ClickBorderDirective,
-    OrderByPipe
+    declExp
   ],
   imports: [
-    CommonModule,
-    FormsModule,
-    mat,
-    RouterModule
+    impExp
   ],
   exports: [
-    FirstComponentComponent,
-    DynamicBackgroundDirective,
-    ClickBorderDirective,
-    FormsModule,
-    mat,
-    OrderByPipe,
-    CommonModule,
-    RouterModule
+    declExp,
+    impExp
   ]
 })
 export class SharedModule { }

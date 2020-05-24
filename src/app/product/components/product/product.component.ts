@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../../services/product-service.service';
-import { Location } from '@angular/common';
 
 enum ProductSearchStatus{
   Undefined,
@@ -24,24 +23,19 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private productService: ProductServiceService,
-    private location: Location
+    private productService: ProductServiceService
   ) {
     this.productIdUrlParam = this.route.snapshot.paramMap.get('id');
     this.productService.getProduct(this.productIdUrlParam).subscribe((p) => {
       this.product = p;
       this.productSearchStatus = p ? ProductSearchStatus.Found : ProductSearchStatus.NotFound;
     });
-    //TODO why this does not work?
-    //this.productService.getProduct(productId).toPromise().then(val => console.log(val));
+    // TODO why this does not work?
+    // this.productService.getProduct(productId).toPromise().then(val => console.log(val));
   }
 
   ngOnInit(): void {
 
-  }
-
-  onBackClick() {
-    this.location.back();
   }
 
   onAddToCartClick() {

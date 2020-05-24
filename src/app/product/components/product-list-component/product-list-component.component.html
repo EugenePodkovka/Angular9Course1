@@ -1,5 +1,5 @@
 <div>
-    <mat-card class="mainBlock"><h2>Product list</h2></mat-card>
+    <app-main-content-card><h2>Product catalog</h2></app-main-content-card>
     <mat-list *ngFor="let productInStock of productsInStock|async">
         <mat-list-item class="productLine">
             <app-product-in-list-component class="main-product-in-list"
