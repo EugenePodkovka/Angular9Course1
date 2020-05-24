@@ -1,4 +1,14 @@
-<p>product works!</p>
-<p>ProductId = {{product.Id}}</p>
-<p>Name = {{product.Name}}</p>
-<p>Price = {{product.Price}}</p>
+<mat-card class="topPageNavBlock">
+    <button mat-stroked-button color="primary" (click)="onBackClick()">Back</button>
+    <button *ngIf="isProductFound()" mat-stroked-button color="accent" class="rightPosition" (click)="onAddToCartClick()">Add to cart</button>
+</mat-card>
+<mat-card *ngIf="isProductFound()" class="mainBlock">
+    <p>ProductId = {{product.Id}}</p>
+    <p>Name = {{product.Name}}</p>
+    <p>Price = {{product.Price}}</p>
+</mat-card>
+<mat-card *ngIf="isProductNotFound()" class="mainBlock warningBox">
+    <p>Product with Id="{{productIdUrlParam}}" not found.</p>
+</mat-card>
+
+
