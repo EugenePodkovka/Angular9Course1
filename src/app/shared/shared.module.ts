@@ -43,6 +43,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { CardMainNavPanelComponent } from './components/card-main-nav-panel/card-main-nav-panel.component';
 import { MainContentCardComponent } from './components/main-content-card/main-content-card.component';
+import { AddToCartBtnComponent } from './components/add-to-cart-btn/add-to-cart-btn.component';
 
 const mat = [
   MatAutocompleteModule,
@@ -87,7 +88,8 @@ const declExp = [
   ClickBorderDirective,
   DynamicBackgroundDirective,
   FirstComponentComponent,
-  MainContentCardComponent
+  MainContentCardComponent,
+  AddToCartBtnComponent
 ];
 const impExp = [
   CommonModule,

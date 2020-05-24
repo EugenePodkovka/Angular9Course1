@@ -1,6 +1,5 @@
 <mat-card>
     <a [routerLink]="['/product', product.Id]">{{product.Name}}</a>
     Price="{{product.Price}}" Remaining="{{productRemaining}}"
-    <input type="button" value="Add to cart" (click)="onBuy()" [disabled]="!isProductAvailable"
-        (mouseover)="onBuyBtnMouseOver()" (mouseout)="onBuyBtnMouseOut()" [ngClass]={buttonHover:isBuyBtnHover}>
+    <app-add-to-cart-btn [product]="product" [isProductAvailable]="isProductAvailable"></app-add-to-cart-btn>
 </mat-card>

@@ -56,7 +56,7 @@ export class CartService {
   }
 
   getProductsInCartCount(): number {
-    return this.purchasedProducts.reduce((sum, val, index) => sum += val.Count, 0);
+    return this.purchasedProducts.reduce((sum, val) => sum += val.Count, 0);
   }
 
   getProductsTotalCost(): number {

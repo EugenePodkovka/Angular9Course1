@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../../services/product-service.service';
@@ -14,11 +14,12 @@ enum ProductSearchStatus{
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent {
   product: Product = {} as Product;
   testValue: string;
   productIdUrlParam: string;
   public productSearchStatus: ProductSearchStatus = ProductSearchStatus.Undefined;
+  productTotalRemaining: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,21 +30,14 @@ export class ProductComponent implements OnInit {
     this.productService.getProduct(this.productIdUrlParam).subscribe((p) => {
       this.product = p;
       this.productSearchStatus = p ? ProductSearchStatus.Found : ProductSearchStatus.NotFound;
+      if (this.productSearchStatus === ProductSearchStatus.Found) {
+        this.productService.getProductTotalRemaining(p.Id).subscribe((totalRemaining => {
+          this.productTotalRemaining = totalRemaining;
+        }));
+      }
     });
     // TODO why this does not work?
     // this.productService.getProduct(productId).toPromise().then(val => console.log(val));
-  }
-
-  ngOnInit(): void {
-
-  }
-
-  onAddToCartClick() {
-    this.onProductPurchased(this.product);
-  }
-
-  onProductPurchased(product: Product){
-    this.productService.buyProduct(product);
   }
 
   isProductFound() {

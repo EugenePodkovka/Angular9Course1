@@ -6,7 +6,7 @@ import { CartService } from '../../services/cart.service';
   selector: 'app-cart-product-list',
   templateUrl: './cart-product-list.component.html',
   styleUrls: ['./cart-product-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class CartProductListComponent {
   @Input() purchasedProducts: PurchasedProduct[];

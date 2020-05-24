@@ -41,7 +41,7 @@ export class ProductServiceService {
   private httpEmulator = new Observable((observer: Subscriber<ProductInStock[]>) => {
     setTimeout(() => {
       observer.next(this.productsInDb);
-    }, 500);
+    }, 2000);
   });
 
   constructor(
@@ -49,8 +49,22 @@ export class ProductServiceService {
     private guidHelperService: GuidHelperService
   ) { }
 
-  getProductsInStock(): Observable<ProductInStock[]> {
-    return this.httpEmulator;
+  getProductTotalRemaining(productId: string): Observable<number> {
+    return new Observable((obs: Subscriber<number>) =>
+      this.getProductsInStock(productId).subscribe(
+        pis => obs.next(pis.reduce((sum, val) => sum += val.Remaining, 0))
+      ));
+  }
+
+  getProductsInStock(productId?: string): Observable<ProductInStock[]> {
+    if (productId){
+      return new Observable((o: Subscriber<ProductInStock[]>) => {
+        this.httpEmulator.subscribe(productInStock =>
+          o.next(productInStock.filter(pis => pis.Product.Id === productId)));
+      });
+    }else{
+      return this.httpEmulator;
+    }
   }
 
   buyProduct(product: Product) {
@@ -58,13 +72,14 @@ export class ProductServiceService {
     this.cartService.addProduct(product);
   }
 
-  getProduct(productId: string) {
+  getProduct(productId: string): Observable<Product> {
     return new Observable((obs: Subscriber<Product>) => {
-      this.httpEmulator.subscribe(productInStock => {
+      this.httpEmulator.subscribe(productsInStock => {
         obs.next(
-          this.productsInDb.find(pis => pis.Product.Id === productId)?.Product
+          productsInStock.find(pis => pis.Product.Id === productId)?.Product
         );
       });
     });
   }
+
 }

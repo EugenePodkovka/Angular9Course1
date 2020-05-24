@@ -5,7 +5,7 @@ import { Product } from '../../../shared/interfaces/product';
   selector: 'app-product-in-list-component',
   templateUrl: './product-in-list-component.component.html',
   styleUrls: ['./product-in-list-component.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProductInListComponentComponent {
   @Input() product: Product | undefined;

@@ -5,7 +5,7 @@ import { PurchasedProduct } from 'src/app/shared/interfaces/purchased-product';
   selector: 'app-cart-product-in-list',
   templateUrl: './cart-product-in-list.component.html',
   styleUrls: ['./cart-product-in-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class CartProductInListComponent {
   @Input() purchasedProduct: PurchasedProduct;
