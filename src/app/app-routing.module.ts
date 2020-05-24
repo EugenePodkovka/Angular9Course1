@@ -5,7 +5,7 @@ import { AboutComponent } from './about/about.component';
 import { ProductComponent } from './product/components/product/product.component';
 import { CartComponent } from './cart/components/cart/cart.component';
 import { OrderFirstStepComponent } from './order/components/order-first-step/order-first-step.component';
-import { AdminComponent } from './admin/component/admin/admin.component';
+import { AdminComponent } from './admin/components/admin/admin.component';
 
 
 const routes: Routes = [

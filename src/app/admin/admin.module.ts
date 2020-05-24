@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { AdminComponent } from './component/admin/admin.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
