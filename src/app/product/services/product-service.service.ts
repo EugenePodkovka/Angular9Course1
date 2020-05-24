@@ -41,7 +41,7 @@ export class ProductServiceService {
   private httpEmulator = new Observable((observer: Subscriber<ProductInStock[]>) => {
     setTimeout(() => {
       observer.next(this.productsInDb);
-    }, 2000);
+    }, 500);
   });
 
   constructor(

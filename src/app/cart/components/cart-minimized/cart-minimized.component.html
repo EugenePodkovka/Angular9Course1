@@ -3,7 +3,7 @@
         <div *ngIf="getCartProductsCount() === 0">Cart is empty</div>
         <div *ngIf="getCartProductsCount() !== 0">
             Products in the cart = {{getCartProductsCount()}}
-            <input type="button" value="Open" (click)="onCartOpen()">
+            <button mat-stroked-button color="accent" (click)="onCartOpen()">Open</button>
         </div>
     </mat-card-content>
 </mat-card>
