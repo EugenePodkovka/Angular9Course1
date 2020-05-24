@@ -1,0 +1,17 @@
+<app-card-main-nav-panel></app-card-main-nav-panel>
+<app-main-content-card>
+    <h2>Order</h2>
+    <div *ngIf="getPurchasedProducts().length !== 0">
+        <ul *ngFor="let purchasedProduct of getPurchasedProducts()">
+            <li>
+                <div class='productInLineText'>{{purchasedProduct.Product.Name}} costs {{purchasedProduct.Product.Price}} count {{purchasedProduct.Count}}</div>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="getPurchasedProducts().length === 0">
+        <p>Order is empty</p>
+    </div>
+    Total products: {{getTotalProducts()}}
+    <br><br>
+    Total cost: {{getTotalCost()}}
+</app-main-content-card>

@@ -44,6 +44,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { CardMainNavPanelComponent } from './components/card-main-nav-panel/card-main-nav-panel.component';
 import { MainContentCardComponent } from './components/main-content-card/main-content-card.component';
 import { AddToCartBtnComponent } from './components/add-to-cart-btn/add-to-cart-btn.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const mat = [
   MatAutocompleteModule,
@@ -95,7 +96,8 @@ const impExp = [
   CommonModule,
   FormsModule,
   RouterModule,
-  mat
+  mat,
+  BrowserAnimationsModule
 ];
 
 @NgModule({

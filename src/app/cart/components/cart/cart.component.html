@@ -14,4 +14,7 @@
     <button *ngIf="getPurchasedProducts().length !== 0" mat-stroked-button color="primary" class="horizontal" 
         (click)="onRemoveAllProductsClick()">Clear cart
     </button>
+    <button *ngIf="getPurchasedProducts().length !== 0" mat-stroked-button color="primary" class="horizontal" 
+            routerLink="/orderFirst">Process to order
+        </button>
 </app-main-content-card>

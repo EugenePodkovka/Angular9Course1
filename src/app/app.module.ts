@@ -8,8 +8,7 @@ import { ProductModule } from './product/product.module';
 import { SharedModule } from './shared/shared.module';
 import { LocalStorageService } from './core/services';
 import { AboutComponent } from './about/about.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CartModule,
     ProductModule,
     SharedModule,
-    BrowserAnimationsModule
+    OrderModule
   ],
   bootstrap: [AppComponent],
   providers: [

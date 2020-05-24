@@ -4,6 +4,7 @@ import { ProductListComponentComponent } from './product/components/product-list
 import { AboutComponent } from './about/about.component';
 import { ProductComponent } from './product/components/product/product.component';
 import { CartComponent } from './cart/components/cart/cart.component';
+import { OrderFirstStepComponent } from './order/components/order-first-step/order-first-step.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductComponent},
   { path: 'testProduct', component: ProductComponent},
   { path: 'cart', component: CartComponent },
+  { path: 'orderFirst', component: OrderFirstStepComponent },
   { path: '**', component: ProductListComponentComponent }
 ];
 
