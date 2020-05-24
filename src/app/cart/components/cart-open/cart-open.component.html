@@ -11,8 +11,13 @@
         <div *ngIf="getPurchasedProducts().length === 0">
             <p>Cart is empty</p>
         </div>
-        <input type="button" class="horizontal" value="Clear cart" (click)="onRemoveAllProductsClick()">
-        <input type="button" class="horizontal" value="Close" (click)="onCloseCartClick()">
+        <button *ngIf="getPurchasedProducts().length !== 0" mat-stroked-button color="primary" class="horizontal" 
+            (click)="onRemoveAllProductsClick()">Clear cart
+        </button>
+        <button mat-stroked-button color="primary" class="horizontal" (click)="onCloseCartClick()">Close</button>
+        <button *ngIf="getPurchasedProducts().length !== 0" mat-stroked-button color="primary" class="horizontal" 
+            routerLink="/cart" (click)="onCloseCartClick()">Process to purchase
+        </button>
         <br><br>
     </app-main-content-card>
 </div>

@@ -2,6 +2,9 @@
 "Task 2. Components" was completed. All subtasks were done. The additional functionality is changing the background of the "Add to cart" buttons on the main product list onmouseover.
 "Task 3. Services and DI" was completed. All subtasks were done.
 "Task 4. Pipes" was completed. The first pipe is in the "About" block next to the "Task 4.1." pointer. The second task is in the cart. Please add products to the cart, then open the cart and apply sorting. 
+"Task 5. Routing"
+   5.3. In order to open the cart, please add products to cart, then click on "Open" in the right top corner of the screen and then click on "Process to purchase".
+
 
 Questions
 1. why this does not work? (ProductComponent - Constructor)

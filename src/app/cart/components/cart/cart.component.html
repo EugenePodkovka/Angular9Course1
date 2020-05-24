@@ -1,0 +1,17 @@
+<app-card-main-nav-panel></app-card-main-nav-panel>
+<app-main-content-card>
+    <h2>Cart</h2>
+    <div *ngIf="getPurchasedProducts().length !== 0">
+        <app-cart-product-list 
+        [purchasedProducts]="getPurchasedProducts()"
+        (decreaseQuantity)="decreaseQuantity($event)"
+        (increaseQuantity)="increaseQuantity($event)"
+        (removeProduct)="removeProduct($event)"></app-cart-product-list>
+    </div>
+    <div *ngIf="getPurchasedProducts().length === 0">
+        <p>Cart is empty</p>
+    </div>
+    <button *ngIf="getPurchasedProducts().length !== 0" mat-stroked-button color="primary" class="horizontal" 
+        (click)="onRemoveAllProductsClick()">Clear cart
+    </button>
+</app-main-content-card>
