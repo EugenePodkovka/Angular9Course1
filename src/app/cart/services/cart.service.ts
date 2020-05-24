@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, DoCheck } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
 import { PurchasedProduct } from '../../shared/interfaces/purchased-product';
+import { LocalStorageService } from 'src/app/core/services';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,12 @@ export class CartService {
   totalSum: number;
   isCartOpen: boolean | false;
 
-  constructor() {
-    this.purchasedProducts = [];
+  private ppLocalStorageKey = 'PurchasedProducts';
+
+  constructor(
+    private localStorageService: LocalStorageService
+  ) {
+    this.loadPurchasedProducts();
   }
 
   addProduct(productToAdd: Product, quantity: number = 1) {
@@ -24,14 +29,17 @@ export class CartService {
     }else{
       this.purchasedProducts.find(pp => pp.Product.Id === productToAdd.Id).Count += quantity;
     }
+    this.savePurchasedProducts();
   }
 
   removeProduct(productId: string) {
     this.purchasedProducts = this.purchasedProducts.filter(pp => pp.Product.Id !== productId);
+    this.savePurchasedProducts();
   }
 
   increaseQuantity(productId: string) {
     this.purchasedProducts.find(pp => pp.Product.Id === productId).Count += 1;
+    this.savePurchasedProducts();
   }
 
   decreaseQuantity(productId: string) {
@@ -41,10 +49,12 @@ export class CartService {
     }else{
       this.purchasedProducts = this.purchasedProducts.filter(pp => pp.Product.Id !== productToRemove.Product.Id);
     }
+    this.savePurchasedProducts();
   }
 
   removeAllProducts() {
     this.purchasedProducts = [];
+    this.savePurchasedProducts();
   }
 
   openCart(){
@@ -66,5 +76,14 @@ export class CartService {
   updateCartData() {
     this.totalQuantity = this.getProductsInCartCount();
     this.totalSum = this.getProductsTotalCost();
+  }
+
+  private savePurchasedProducts() {
+    this.localStorageService.setItem(this.ppLocalStorageKey, this.purchasedProducts);
+  }
+
+  private loadPurchasedProducts() {
+    const storedPP = this.localStorageService.getItem(this.ppLocalStorageKey);
+    this.purchasedProducts = storedPP == null ? [] : storedPP;
   }
 }

@@ -4,6 +4,8 @@ import { GuidHelperService } from 'src/app/shared/services/guid-helper/guid-help
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ProductInStock } from 'src/app/shared/interfaces/product-in-stock';
 import { Observable, Subscriber } from 'rxjs';
+import { LocalStorageService } from 'src/app/core/services';
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,11 +45,15 @@ export class ProductServiceService {
       observer.next(this.productsInDb);
     }, 500);
   });
+  private productsInDbLocalStorageKey = 'productsInDb';
 
   constructor(
     private cartService: CartService,
-    private guidHelperService: GuidHelperService
-  ) { }
+    private guidHelperService: GuidHelperService,
+    private localStorageService: LocalStorageService
+  ) {
+    this.updateLocalPurchasedProducts();
+  }
 
   getProductTotalRemaining(productId: string): Observable<number> {
     return new Observable((obs: Subscriber<number>) =>
@@ -57,12 +63,12 @@ export class ProductServiceService {
   }
 
   getProductsInStock(productId?: string): Observable<ProductInStock[]> {
-    if (productId){
+    if (productId) {
       return new Observable((o: Subscriber<ProductInStock[]>) => {
         this.httpEmulator.subscribe(productInStock =>
           o.next(productInStock.filter(pis => pis.Product.Id === productId)));
       });
-    }else{
+    } else {
       return this.httpEmulator;
     }
   }
@@ -82,4 +88,12 @@ export class ProductServiceService {
     });
   }
 
+  private updateLocalPurchasedProducts() {
+    const storedProducts = this.localStorageService.getItem(this.productsInDbLocalStorageKey);
+    if (storedProducts == null) {
+      this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
+    } else {
+      this.productsInDb = storedProducts;
+    }
+  }
 }
