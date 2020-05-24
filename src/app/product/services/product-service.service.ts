@@ -41,7 +41,7 @@ export class ProductServiceService {
   private httpEmulator = new Observable((observer: Subscriber<ProductInStock[]>) => {
     setTimeout(() => {
       observer.next(this.productsInDb);
-    }, 1000);
+    }, 100);
   });
 
   constructor(
@@ -56,5 +56,15 @@ export class ProductServiceService {
   buyProduct(product: Product) {
     console.log(`The product Name=\"${product.Name}\", Id=\"${product.Id}\" has been purchased.`);
     this.cartService.addProduct(product);
+  }
+
+  getProduct(productId: string) {
+    return new Observable((obs: Subscriber<Product>) => {
+      this.httpEmulator.subscribe(productInStock => {
+        obs.next(
+          this.productsInDb.find(pis => pis.Product.Id === productId)?.Product
+        );
+      });
+    });
   }
 }

@@ -5,6 +5,7 @@ import { FirstComponentComponent } from './components/first-component/first-comp
 import { DynamicBackgroundDirective } from './directives/dynamic-background.directive';
 import { ClickBorderDirective } from './directives/click-border.directive';
 import { OrderByPipe } from './pipes';
+import { RouterModule } from '@angular/router';
 
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -89,7 +90,8 @@ const mat = [
   imports: [
     CommonModule,
     FormsModule,
-    mat
+    mat,
+    RouterModule
   ],
   exports: [
     FirstComponentComponent,
@@ -98,7 +100,8 @@ const mat = [
     FormsModule,
     mat,
     OrderByPipe,
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class SharedModule { }
