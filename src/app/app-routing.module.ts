@@ -6,17 +6,32 @@ import { ProductComponent } from './product/components/product/product.component
 import { CartComponent } from './cart/components/cart/cart.component';
 import { OrderFirstStepComponent } from './order/components/order-first-step/order-first-step.component';
 import { AdminComponent } from './admin/components/admin/admin.component';
+import { AdminProductsListComponent } from './admin/components/admin-products-list/admin-products-list.component';
+import { AdminProductEditComponent } from './admin/components/admin-product-edit/admin-product-edit.component';
+import { AdminOrdersListComponent } from './admin/components/admin-orders-list/admin-orders-list.component';
+import { AdminOrderEditComponent } from './admin/components/admin-order-edit/admin-order-edit.component';
+import { AdminMainComponent } from './admin/components/admin-main/admin-main.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: ProductListComponentComponent},
-  { path: 'about', component: AboutComponent},
-  { path: 'product/:id', component: ProductComponent},
-  { path: 'testProduct', component: ProductComponent},
+  { path: 'home', component: ProductListComponentComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'product/:id', component: ProductComponent },
+  { path: 'testProduct', component: ProductComponent },
   { path: 'cart', component: CartComponent },
   { path: 'orderFirst', component: OrderFirstStepComponent },
-  { path: 'admin', component: AdminComponent },
+  {
+    path: 'admin', component: AdminComponent,
+    children: [
+      { path: 'main', component: AdminMainComponent },
+      { path: 'products', component: AdminProductsListComponent },
+      { path: 'product/add', component: AdminProductEditComponent },
+      { path: 'product/edit/:id', component: AdminProductEditComponent },
+      { path: 'orders', component: AdminOrdersListComponent },
+      { path: 'order/edit/:id', component: AdminOrderEditComponent }
+    ]
+  },
   { path: '**', component: ProductListComponentComponent }
 ];
 
