@@ -1,1 +1,23 @@
-<p>admin-product-edit works!</p>
+<app-card-main-nav-panel>
+    <button mat-stroked-button color="accent" class="rightPosition" 
+        *ngIf="isAllProductDataLoaded"
+        (click)="onSaveClick()"
+    >Save</button>
+</app-card-main-nav-panel>
+<app-main-content-card>
+    <p>Edit {{product.Name}}</p>
+</app-main-content-card>
+<app-main-content-card>
+    <mat-form-field class="verticalControl">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput [(ngModel)]="product.Name">
+    </mat-form-field>
+    <mat-form-field class="verticalControl">
+        <mat-label>Price</mat-label>
+        <input type="number" matInput [(ngModel)]="product.Price">
+    </mat-form-field>
+    <mat-form-field class="verticalControl">
+        <mat-label>Remaining</mat-label>
+        <input type="number" matInput [(ngModel)]="productTotalRemaining">
+    </mat-form-field>
+</app-main-content-card>
