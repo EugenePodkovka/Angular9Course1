@@ -78,11 +78,11 @@ export class CartService {
     this.totalSum = this.getProductsTotalCost();
   }
 
-  private savePurchasedProducts() {
+  savePurchasedProducts() {
     this.localStorageService.setItem(this.ppLocalStorageKey, this.purchasedProducts);
   }
 
-  private loadPurchasedProducts() {
+  loadPurchasedProducts() {
     const storedPP = this.localStorageService.getItem(this.ppLocalStorageKey);
     this.purchasedProducts = storedPP == null ? [] : storedPP;
   }

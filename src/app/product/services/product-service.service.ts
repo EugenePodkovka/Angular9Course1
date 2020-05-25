@@ -52,7 +52,7 @@ export class ProductServiceService {
     private guidHelperService: GuidHelperService,
     private localStorageService: LocalStorageService
   ) {
-    this.updateLocalPurchasedProducts();
+    this.updateLocalProducts();
   }
 
   getProductTotalRemaining(productId: string): Observable<number> {
@@ -88,12 +88,25 @@ export class ProductServiceService {
     });
   }
 
-  private updateLocalPurchasedProducts() {
+  updateLocalProducts() {
     const storedProducts = this.localStorageService.getItem(this.productsInDbLocalStorageKey);
     if (storedProducts == null) {
       this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
     } else {
       this.productsInDb = storedProducts;
     }
+  }
+
+  saveLocalProducts() {
+    this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
+  }
+
+  updateProductInStock(product: Product, remaining?: number) {
+    const productInDb = this.productsInDb.find(pis => pis.Product.Id === product.Id);
+    productInDb.Product = product;
+    if (remaining != null) {
+      productInDb.Remaining = remaining;
+    }
+    this.saveLocalProducts();
   }
 }
