@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-admin-main',
   templateUrl: './admin-main.component.html',
   styleUrls: ['./admin-main.component.scss']
 })
-export class AdminMainComponent implements OnInit {
+export class AdminMainComponent {
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
 
-  ngOnInit(): void {
+  onClearLocalStorageBtnClick() {
+    this.localStorageService.clearAll();
   }
 
 }
