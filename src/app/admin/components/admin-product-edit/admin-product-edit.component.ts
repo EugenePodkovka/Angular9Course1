@@ -40,6 +40,7 @@ export class AdminProductEditComponent {
       this.productService.addNewProductInStock(this.product, this.productTotalRemaining);
     }
     this.cartService.savePurchasedProducts();
+    this.isNewMode = undefined;
   }
 
   initializeProduct() {
