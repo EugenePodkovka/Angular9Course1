@@ -22,6 +22,7 @@ export class AdminProductEditComponent {
   public productSearchStatus: ProductSearchStatus = ProductSearchStatus.Undefined;
   productTotalRemaining: number;
   isAllProductDataLoaded: boolean;
+  isNewMode: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,20 +30,35 @@ export class AdminProductEditComponent {
     private productService: ProductServiceService,
     private cartService: CartService
   ) {
-    this.setProduct((p: Product) => {
-      this.setTotalRemaining(p, () => {
-        this.isAllProductDataLoaded = this.productSearchStatus === ProductSearchStatus.Found;
-      });
-    });
+    this.initializeProduct();
   }
 
   onSaveClick() {
-    this.productService.updateProductInStock(this.product, this.productTotalRemaining);
+    if (this.isNewMode === false) {
+      this.productService.updateProductInStock(this.product, this.productTotalRemaining);
+    } else if (this.isNewMode === true) {
+      this.productService.addNewProductInStock(this.product, this.productTotalRemaining);
+    }
     this.cartService.savePurchasedProducts();
   }
 
-  setProduct(callback?: (p: Product) => any) {
+  initializeProduct() {
     this.productIdUrlParam = this.route.snapshot.paramMap.get('id');
+    if (this.productIdUrlParam == null) {
+      this.isNewMode = true;
+      this.createNewProduct();
+      this.isAllProductDataLoaded = this.productSearchStatus === ProductSearchStatus.Found;
+    } else {
+      this.isNewMode = false;
+      this.setProduct((p: Product) => {
+        this.setTotalRemaining(p, () => {
+          this.isAllProductDataLoaded = this.productSearchStatus === ProductSearchStatus.Found;
+        });
+      });
+    }
+  }
+
+  setProduct(callback?: (p: Product) => any) {
     this.productService.getProduct(this.productIdUrlParam).subscribe((p) => {
       this.product = p;
       this.productSearchStatus = p ? ProductSearchStatus.Found : ProductSearchStatus.NotFound;
@@ -60,5 +76,10 @@ export class AdminProductEditComponent {
         callback?.call(this);
       }));
     }
+  }
+
+  createNewProduct() {
+    this.product = this.productService.getNewProduct();
+    this.productSearchStatus = ProductSearchStatus.Found;
   }
 }

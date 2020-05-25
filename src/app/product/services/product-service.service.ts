@@ -52,7 +52,7 @@ export class ProductServiceService {
     private guidHelperService: GuidHelperService,
     private localStorageService: LocalStorageService
   ) {
-    this.updateLocalProducts();
+    this.updateProductsFromLocalStorage();
   }
 
   getProductTotalRemaining(productId: string): Observable<number> {
@@ -88,7 +88,7 @@ export class ProductServiceService {
     });
   }
 
-  updateLocalProducts() {
+  updateProductsFromLocalStorage() {
     const storedProducts = this.localStorageService.getItem(this.productsInDbLocalStorageKey);
     if (storedProducts == null) {
       this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
@@ -97,7 +97,7 @@ export class ProductServiceService {
     }
   }
 
-  saveLocalProducts() {
+  saveProductsToLocalStorage() {
     this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
   }
 
@@ -107,6 +107,20 @@ export class ProductServiceService {
     if (remaining != null) {
       productInDb.Remaining = remaining;
     }
-    this.saveLocalProducts();
+    this.saveProductsToLocalStorage();
+  }
+
+  addNewProductInStock(product: Product, remaining?: number) {
+    this.productsInDb.push({
+      Product: product,
+      Remaining: remaining == null ? 0 : remaining
+    } as ProductInStock);
+    this.saveProductsToLocalStorage();
+  }
+
+  getNewProduct() {
+    return {
+      Id: this.guidHelperService.NewGuid()
+    } as Product;
   }
 }

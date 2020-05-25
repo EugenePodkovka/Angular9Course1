@@ -1,4 +1,8 @@
-<app-card-main-nav-panel></app-card-main-nav-panel>
+<app-card-main-nav-panel>
+    <button mat-stroked-button color="accent" class="rightPosition" 
+    routerLink="/admin/product/add"
+    >Add</button>
+</app-card-main-nav-panel>
 <app-main-content-card><p>Admin product list</p></app-main-content-card>
 <mat-list *ngFor="let productInStock of productsInStock|async">
     <mat-list-item class="productLine">
