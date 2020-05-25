@@ -1,13 +1,11 @@
-<div>
-    <app-main-content-card><h2>Product catalog</h2></app-main-content-card>
-    <mat-list *ngFor="let productInStock of productsInStock|async">
-        <mat-list-item class="productLine">
-            <app-product-in-list-component class="main-product-in-list"
-                [product]="productInStock.Product"
-                [isProductAvailable]="productInStock.Remaining > 0" 
-                [productRemaining]="productInStock.Remaining"
-                (productPurchased)="onProductPurchased($event)">
-            </app-product-in-list-component>
-        </mat-list-item>
-    </mat-list>
-</div>
+<app-main-content-card><h2>Product catalog</h2></app-main-content-card>
+<mat-list *ngFor="let productInStock of productsInStock|async">
+    <mat-list-item class="productLine">
+        <app-product-in-list-component class="main-product-in-list"
+            [product]="productInStock.Product"
+            [isProductAvailable]="productInStock.Remaining > 0" 
+            [productRemaining]="productInStock.Remaining"
+            (productPurchased)="onProductPurchased($event)">
+        </app-product-in-list-component>
+    </mat-list-item>
+</mat-list>

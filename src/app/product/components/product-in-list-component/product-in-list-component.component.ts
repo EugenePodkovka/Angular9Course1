@@ -8,21 +8,12 @@ import { Product } from '../../../shared/interfaces/product';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class ProductInListComponentComponent {
-  @Input() product: Product | undefined;
+  @Input() product: Product;
   @Input() isProductAvailable: boolean;
   @Input() productRemaining: number;
   @Output() productPurchased: EventEmitter<Product> = new EventEmitter<Product>();
-  isBuyBtnHover = false;
 
   onBuy() {
     this.productPurchased.emit(this.product);
-  }
-
-  onBuyBtnMouseOver(){
-    this.isBuyBtnHover = true;
-  }
-
-  onBuyBtnMouseOut(){
-    this.isBuyBtnHover = false;
   }
 }

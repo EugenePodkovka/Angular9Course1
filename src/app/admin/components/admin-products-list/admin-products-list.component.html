@@ -1,1 +1,11 @@
-<p>admin-products-list works!</p>
+<app-card-main-nav-panel></app-card-main-nav-panel>
+<app-main-content-card><p>Admin product list</p></app-main-content-card>
+<mat-list *ngFor="let productInStock of productsInStock|async">
+    <mat-list-item class="productLine">
+        <app-admin-product-in-list 
+            class="main-product-in-list"
+            [product]="productInStock.Product"
+            [productRemaining]="productInStock.Remaining"
+        ></app-admin-product-in-list>
+    </mat-list-item>
+</mat-list>

@@ -1,18 +1,13 @@
-.mainBlock{
+.mainBlock {
     min-height: 36px;
 }
-.mainBlock .inline{
-    display: inline-block;
+.mainBlock .inline {
+    display: inline;
 }
-.mainBlock .rightPosition{
+.mainBlock .rightPosition {
     float: right;
 }
-.mainBlock .productDescription{
-    position: absolute;
-    top: 50%;
-    transform: translate(0%, -50%);
-}
-.mainBlock .productLink{
+.mainBlock .productLink {
     text-decoration: none;
     color: black;
     font-size: large;
@@ -21,4 +16,14 @@
 .mainBlock .productLink:hover {
     text-decoration: underline;
     color: #ff4081;
-  }
+}
+.verticalControl {
+    margin-left: 16px;
+    padding-top: 1.25em;
+}
+.saveBtn {
+    margin-top: 26px;
+}
+.textBox {
+    padding: 7px;
+}

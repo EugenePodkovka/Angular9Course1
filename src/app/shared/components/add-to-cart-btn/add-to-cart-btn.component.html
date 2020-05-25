@@ -1,5 +1,5 @@
-<button mat-stroked-button color="accent" 
-    value="Add to cart" 
+<button mat-stroked-button 
+    color="accent" 
     *ngIf="isProductFound()"
     (click)="onBuyClick()" 
     [disabled]="!isProductAvailable"

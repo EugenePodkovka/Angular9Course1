@@ -1,7 +1,12 @@
 <mat-card class="mainBlock">
-    <div class="inline productDescription">
-        <a class="productLink" [routerLink]="['/product', product.Id]">{{product.Name}}</a>
-        Price="{{product.Price}}" Remaining="{{productRemaining}}"
+    <div class="rightPosition">
+        <app-add-to-cart-btn [product]="product" [isProductAvailable]="isProductAvailable">
+        </app-add-to-cart-btn>
     </div>
-    <app-add-to-cart-btn class="inline rightPosition" [product]="product" [isProductAvailable]="isProductAvailable"></app-add-to-cart-btn>
+    <div class="inline productDescription">
+        <div class="textBox">
+            <a class="productLink" [routerLink]="['/product', product.Id]">{{product.Name}}</a>
+            Price="{{product.Price}}" Remaining="{{productRemaining}}"
+        </div>
+    </div>
 </mat-card>
