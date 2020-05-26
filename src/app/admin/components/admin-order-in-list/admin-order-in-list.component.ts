@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Order } from 'src/app/shared/interfaces/order';
+import { OrderService } from 'src/app/order/services/order.service';
 
 @Component({
   selector: 'app-admin-order-in-list',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-order-in-list.component.scss']
 })
 export class AdminOrderInListComponent implements OnInit {
+  @Input() order: Order;
 
-  constructor() { }
+  constructor(
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onProcessedClick() {
+    this.order.IsProcessed = true;
+    this.orderService.updateOrderPropertyInLocalStorage(this.order, 'IsProcessed');
   }
 
 }

@@ -24,13 +24,18 @@ export class OrderFirstStepComponent implements OnInit {
   }
 
   onSubmitClick() {
-    this.submit();
-    this.popupOrderConfirmation();
+    if (this.order?.Id == null) {
+
+    } else {
+      this.submit();
+      this.popupOrderConfirmation();
+    }
   }
 
   submit() {
     this.order.Description = JSON.stringify(this.getPurchasedProducts());
     this.orderService.submitOrder(this.order);
+    this.initOrder();
   }
 
   popupOrderConfirmation() {
@@ -40,7 +45,7 @@ export class OrderFirstStepComponent implements OnInit {
   }
 
   initOrder() {
-    this.order = {} as Order;
+    this.order = this.orderService.getNewOrder();
   }
 
   getPurchasedProducts(): PurchasedProduct[] {

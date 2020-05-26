@@ -1,1 +1,22 @@
-<p>admin-order-in-list works!</p>
+<mat-card class="mainBlock">
+    <div class="rightPosition">
+        <button mat-stroked-button color="accent" class="saveBtn" 
+            [disabled]="order.IsProcessed"
+            (click)="onProcessedClick()"
+        >Processed</button>
+    </div>
+    <div class="inline">
+        <mat-form-field class="verticalControl">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput [value]="order.UserName">
+        </mat-form-field>
+        <mat-form-field class="verticalControl">
+            <mat-label>Phone</mat-label>
+            <input type="tel" matInput [value]="order.UserPhone">
+        </mat-form-field>
+        <mat-form-field class="verticalControl">
+            <mat-label>Description</mat-label>
+            <textarea matInput>{{order.Description}}</textarea>
+        </mat-form-field>
+    </div>
+</mat-card>

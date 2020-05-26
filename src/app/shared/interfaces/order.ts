@@ -6,4 +6,5 @@ export interface Order {
     UserPhone: string;
     UserEmail: string;
     UserId: string;
+    IsProcessed: boolean;
 }

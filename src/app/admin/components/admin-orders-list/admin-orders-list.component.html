@@ -1,1 +1,11 @@
-<p>admin-orders-list works!</p>
+<app-card-main-nav-panel></app-card-main-nav-panel>
+<app-main-content-card>Orders</app-main-content-card>
+<mat-list *ngFor="let order of orders">
+    <mat-list-item class="productLine">
+        <app-admin-order-in-list 
+            [order]="order"
+            class="main-product-in-list"
+        ></app-admin-order-in-list>
+    </mat-list-item>
+</mat-list>
+

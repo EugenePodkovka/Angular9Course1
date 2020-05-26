@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/shared/interfaces/order';
+import { OrderService } from 'src/app/order/services/order.service';
 
 @Component({
   selector: 'app-admin-orders-list',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-orders-list.component.scss']
 })
 export class AdminOrdersListComponent implements OnInit {
+  orders: Order[];
 
-  constructor() { }
+  constructor(
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
+    this.initOrders();
+  }
+
+  initOrders() {
+    this.orders = this.orderService.getOrdersFromLocalStorage();
   }
 
 }
