@@ -3,6 +3,7 @@ import { Product } from 'src/app/shared/interfaces/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from 'src/app/product/services/product-service.service';
 import { CartService } from 'src/app/cart/services/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 enum ProductSearchStatus {
   Undefined,
@@ -28,7 +29,8 @@ export class AdminProductEditComponent {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductServiceService,
-    private cartService: CartService
+    private cartService: CartService,
+    private snackBar: MatSnackBar
   ) {
     this.initializeProduct();
   }
@@ -41,6 +43,13 @@ export class AdminProductEditComponent {
     }
     this.cartService.savePurchasedProducts();
     this.isNewMode = undefined;
+    this.showProductSavedPopup();
+  }
+
+  showProductSavedPopup() {
+    this.snackBar.open('Product saved', 'Save product', {
+      duration: 2000
+    });
   }
 
   initializeProduct() {
