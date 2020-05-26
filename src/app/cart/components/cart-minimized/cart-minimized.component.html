@@ -2,7 +2,7 @@
     <mat-card class="cart">
         <mat-card-content class="content">
             <div class="empty" *ngIf="getCartProductsCount() === 0">Cart is empty</div>
-            <div class="full" *ngIf="getCartProductsCount() !== 0">
+            <div *ngIf="getCartProductsCount() !== 0">
                 Products in the cart = {{getCartProductsCount()}}
                 <button mat-stroked-button color="accent" (click)="onCartOpen()">Open</button>
             </div>
