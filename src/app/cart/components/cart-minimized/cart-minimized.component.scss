@@ -1,10 +1,12 @@
-.mainBlock{
-    border: 1px solid black;
-}
-
-.matCardCart{
-    padding: 10px;
-    position: fixed;
-    right: 5px;
-    top: 5px;
+.cart {
+    padding: 5px 7px 5px 7px;
+    .content {
+        min-height: 36px;
+        .empty {
+            padding-top: 1px;
+        }
+        .full {
+    
+        }
+    }
 }

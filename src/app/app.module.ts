@@ -10,11 +10,15 @@ import { LocalStorageService } from './core/services';
 import { AboutComponent } from './about/about.component';
 import { OrderModule } from './order/order.module';
 import { AdminModule } from './admin/admin.module';
+import { LoginOpenComponent } from './login/components/login-open/login-open.component';
+import { LoginMinimizedComponent } from './login/components/login-minimized/login-minimized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    LoginOpenComponent,
+    LoginMinimizedComponent
   ],
   imports: [
     BrowserModule,

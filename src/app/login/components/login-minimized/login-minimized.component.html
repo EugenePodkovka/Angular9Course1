@@ -1,0 +1,8 @@
+<div>
+    <mat-card class="login">
+        <mat-card-content>
+            <div *ngIf="!isLoggedIn">Login</div>
+            <div *ngIf="isLoggedIn" routerLink="/admin/main">Welcome, {{user.Name}}</div>
+        </mat-card-content>
+    </mat-card>
+</div>
