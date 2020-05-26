@@ -8,14 +8,24 @@ import { User } from 'src/app/shared/interfaces/user';
 })
 export class LoginMinimizedComponent implements OnInit {
   user: User;
-  isLoggedIn = true;
+  isLoggedIn = false;
+  isAdmin = false;
 
   constructor() { }
 
   ngOnInit(): void {
     this.user = {
-      Name: 'Yevhen'
+      Name: 'Admin'
     } as User;
   }
 
+  loginAsAdmin() {
+    this.isLoggedIn = true;
+    this.isAdmin = true;
+  }
+
+  Logout() {
+    this.isLoggedIn = false;
+    this.isAdmin = false;
+  }
 }
