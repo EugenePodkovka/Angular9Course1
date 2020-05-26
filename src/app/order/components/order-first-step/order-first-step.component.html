@@ -1,10 +1,13 @@
-<app-card-main-nav-panel></app-card-main-nav-panel>
+<app-card-main-nav-panel>
+    <button mat-stroked-button color="accent" class="rightPosition" (click)="onSubmitClick()">Submit</button>
+</app-card-main-nav-panel>
 <app-main-content-card>
     <h2>Order</h2>
     <div *ngIf="getPurchasedProducts().length !== 0">
         <ul *ngFor="let purchasedProduct of getPurchasedProducts()">
             <li>
-                <div class='productInLineText'>{{purchasedProduct.Product.Name}} costs {{purchasedProduct.Product.Price}} count {{purchasedProduct.Count}}</div>
+                <div class='productInLineText'>{{purchasedProduct.Product.Name}} costs
+                    {{purchasedProduct.Product.Price}} count {{purchasedProduct.Count}}</div>
             </li>
         </ul>
     </div>
@@ -14,4 +17,15 @@
     Total products: {{getTotalProducts()}}
     <br><br>
     Total cost: {{getTotalCost()}}
+</app-main-content-card>
+<app-main-content-card><h3>Shipment information</h3></app-main-content-card>
+<app-main-content-card>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input type="text" matInput placeholder="Mr. Robert Dowson" [(ngModel)]="order.UserName">
+    </mat-form-field>
+    <mat-form-field class="horizontalElements">
+        <mat-label>Phone</mat-label>
+        <input type="tel" matInput placeholder="111-1111-1111" [(ngModel)]="order.UserPhone">
+    </mat-form-field>
 </app-main-content-card>
