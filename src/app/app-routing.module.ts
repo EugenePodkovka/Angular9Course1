@@ -11,6 +11,7 @@ import { AdminProductEditComponent } from './admin/components/admin-product-edit
 import { AdminOrdersListComponent } from './admin/components/admin-orders-list/admin-orders-list.component';
 import { AdminOrderEditComponent } from './admin/components/admin-order-edit/admin-order-edit.component';
 import { AdminMainComponent } from './admin/components/admin-main/admin-main.component';
+import { AdminGuard } from './core/guards/admin.guard';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'orderFirst', component: OrderFirstStepComponent },
   {
     path: 'admin', component: AdminComponent,
+    canActivate: [AdminGuard],
     children: [
       { path: 'main', component: AdminMainComponent },
       { path: 'products', component: AdminProductsListComponent },
