@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProductServiceService } from '../../services/product-service.service';
+import { ActivatedRoute } from '@angular/router';
 
-enum ProductSearchStatus{
+enum ProductSearchStatus {
   Undefined,
   Found,
   NotFound
@@ -14,7 +13,7 @@ enum ProductSearchStatus{
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit {
   product: Product = {} as Product;
   testValue: string;
   productIdUrlParam: string;
@@ -22,13 +21,19 @@ export class ProductComponent {
   productTotalRemaining: number;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private productService: ProductServiceService
-  ) {
-    this.setProduct((p: Product) => {
-      this.setTotalRemaining(p);
-    });
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit() {
+    this.productIdUrlParam = this.route.snapshot.paramMap.get('id');
+    const receivedProduct = this.route.snapshot.data.productData?.product;
+    if (receivedProduct == null) {
+      this.productSearchStatus = ProductSearchStatus.NotFound;
+    } else {
+      this.product = receivedProduct;
+      this.productTotalRemaining = this.route.snapshot.data.productData?.remaining;
+      this.productSearchStatus = ProductSearchStatus.Found;
+    }
   }
 
   isProductFound() {
@@ -39,24 +44,7 @@ export class ProductComponent {
     return this.productSearchStatus === ProductSearchStatus.NotFound;
   }
 
-  setProduct(callback?: (p: Product) => any) {
-    this.productIdUrlParam = this.route.snapshot.paramMap.get('id');
-    this.productService.getProduct(this.productIdUrlParam).subscribe((p) => {
-      this.product = p;
-      this.productSearchStatus = p ? ProductSearchStatus.Found : ProductSearchStatus.NotFound;
-      callback?.call(this, p);
-    });
-
-    // TODO why this does not work?
-    // this.productService.getProduct(productId).toPromise().then(val => console.log(val));
-  }
-
-  setTotalRemaining(p: Product, callback?: () => any) {
-    if (this.productSearchStatus === ProductSearchStatus.Found) {
-      this.productService.getProductTotalRemaining(p.Id).subscribe((totalRemaining => {
-        this.productTotalRemaining = totalRemaining;
-        callback?.call(this);
-      }));
-    }
+  isProductAvailable() {
+    return this.productTotalRemaining > 0;
   }
 }

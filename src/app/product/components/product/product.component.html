@@ -1,5 +1,5 @@
 <app-card-main-nav-panel>
-    <app-add-to-cart-btn [product]="product"></app-add-to-cart-btn>
+    <app-add-to-cart-btn [product]="product" [isProductAvailable]="isProductAvailable()"></app-add-to-cart-btn>
 </app-card-main-nav-panel>
 <app-main-content-card *ngIf="isProductFound()">
     <p>ProductId = {{product.Id}}</p>

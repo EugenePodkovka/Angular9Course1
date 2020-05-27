@@ -12,13 +12,14 @@ import { AdminOrdersListComponent } from './admin/components/admin-orders-list/a
 import { AdminOrderEditComponent } from './admin/components/admin-order-edit/admin-order-edit.component';
 import { AdminMainComponent } from './admin/components/admin-main/admin-main.component';
 import { AdminGuard } from './core/guards/admin.guard';
+import { ProductEditResolver } from './product/classes/product-edit-resolver';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: ProductListComponentComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'product/:id', component: ProductComponent },
+  { path: 'product/:id', component: ProductComponent, resolve: { productData: ProductEditResolver } },
   { path: 'testProduct', component: ProductComponent },
   { path: 'cart', component: CartComponent },
   { path: 'orderFirst', component: OrderFirstStepComponent },
