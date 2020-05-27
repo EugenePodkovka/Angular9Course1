@@ -1,9 +1,9 @@
 <div>
     <mat-card class="login">
         <mat-card-content>
-            <div *ngIf="!isLoggedIn"><span class="span-link" (click)="loginAsAdmin()">Login as Admin</span></div>
-            <div *ngIf="isLoggedIn && isAdmin">
-                Welcome, {{user.Name}} |  
+            <div *ngIf="!loginService.isLoggedIn"><span class="span-link" (click)="loginAsAdmin()">Login as Admin</span></div>
+            <div *ngIf="loginService.isLoggedIn && loginService.isAdmin">
+                Welcome, {{loginService.currentUser.Name}} |  
                 <span class="span-link" routerLink="/admin/main">Admin area</span> | 
                 <span class="span-link" (click)="Logout()">Logout</span>
             </div>

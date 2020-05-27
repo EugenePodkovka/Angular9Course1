@@ -1,31 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/shared/interfaces/user';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login-minimized',
   templateUrl: './login-minimized.component.html',
   styleUrls: ['./login-minimized.component.scss']
 })
-export class LoginMinimizedComponent implements OnInit {
-  user: User;
-  isLoggedIn = false;
-  isAdmin = false;
+export class LoginMinimizedComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.user = {
-      Name: 'Admin'
-    } as User;
-  }
+  constructor(
+    public loginService: LoginService
+  ) { }
 
   loginAsAdmin() {
-    this.isLoggedIn = true;
-    this.isAdmin = true;
+    this.loginService.loginAsAdmin();
   }
 
   Logout() {
-    this.isLoggedIn = false;
-    this.isAdmin = false;
+    this.loginService.Logout();
   }
 }

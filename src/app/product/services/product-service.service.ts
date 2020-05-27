@@ -45,7 +45,6 @@ export class ProductServiceService {
       observer.next(this.productsInDb);
     }, 500);
   });
-  private productsInDbLocalStorageKey = 'productsInDb';
 
   constructor(
     private cartService: CartService,
@@ -89,16 +88,16 @@ export class ProductServiceService {
   }
 
   updateProductsFromLocalStorage() {
-    const storedProducts = this.localStorageService.getItem(this.productsInDbLocalStorageKey);
+    const storedProducts = this.localStorageService.getItem(this.localStorageService.keys.productsInDb);
     if (storedProducts == null) {
-      this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
+      this.localStorageService.setItem(this.localStorageService.keys.productsInDb, this.productsInDb);
     } else {
       this.productsInDb = storedProducts;
     }
   }
 
   saveProductsToLocalStorage() {
-    this.localStorageService.setItem(this.productsInDbLocalStorageKey, this.productsInDb);
+    this.localStorageService.setItem(this.localStorageService.keys.productsInDb, this.productsInDb);
   }
 
   updateProductInStock(product: Product, remaining?: number) {

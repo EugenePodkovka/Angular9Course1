@@ -12,8 +12,6 @@ export class CartService {
   totalSum: number;
   isCartOpen: boolean | false;
 
-  private ppLocalStorageKey = 'PurchasedProducts';
-
   constructor(
     private localStorageService: LocalStorageService
   ) {
@@ -79,11 +77,11 @@ export class CartService {
   }
 
   savePurchasedProducts() {
-    this.localStorageService.setItem(this.ppLocalStorageKey, this.purchasedProducts);
+    this.localStorageService.setItem(this.localStorageService.keys.purchasedProducts, this.purchasedProducts);
   }
 
   loadPurchasedProducts() {
-    const storedPP = this.localStorageService.getItem(this.ppLocalStorageKey);
+    const storedPP = this.localStorageService.getItem(this.localStorageService.keys.purchasedProducts);
     this.purchasedProducts = storedPP == null ? [] : storedPP;
   }
 }
