@@ -8,16 +8,15 @@ import { CartService } from '../cart/services/cart.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('appTitle', {static: true}) appTitleHeader: ElementRef;
+  @ViewChild('appTitle', { static: true }) appTitleHeader: ElementRef;
 
-  fillerNav = Array.from({length: 5}, (_, i) => `Nav Item ${i + 1}`);
+  fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
 
   constructor(
     public cartService: CartService
-  ){
-  }
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.appTitleHeader.nativeElement.textContent = 'Angular 9 applition';
   }
 

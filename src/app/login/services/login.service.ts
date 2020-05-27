@@ -36,7 +36,7 @@ export class LoginService {
 
   updateCurrentUserFromLocalStorage() {
     const storedUserData = this.localStorageService.getItem(this.localStorageService.keys.loginInfo) as CurrentUserBase;
-    if(storedUserData){
+    if (storedUserData) {
       this.currentUser.data.Name = storedUserData.data.Name;
       this.currentUser.isLoggedIn = storedUserData.isLoggedIn;
       this.currentUser.isAdmin = storedUserData.isAdmin;
