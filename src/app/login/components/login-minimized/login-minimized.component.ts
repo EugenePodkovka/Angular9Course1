@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { CurrentUser } from 'src/app/shared/classes/current-user';
 
 @Component({
   selector: 'app-login-minimized',
@@ -9,8 +10,11 @@ import { LoginService } from '../../services/login.service';
 export class LoginMinimizedComponent {
 
   constructor(
-    public loginService: LoginService
-  ) { }
+    public loginService: LoginService,
+    public currentUser: CurrentUser
+  ) {
+    this.loginService.updateCurrentUserFromLocalStorage();
+  }
 
   loginAsAdmin() {
     this.loginService.loginAsAdmin();
