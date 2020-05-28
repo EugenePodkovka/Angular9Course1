@@ -40,7 +40,7 @@
    * check the product list. all previously added/modified products are available. Feel free to buy them. The "Add to cart button" is active if the product remaining is positive. 
 
 Questions
-1. why this does not work? (ProductComponent - Constructor)
+1. why this does not work? (C:\Projects\Angular9Course1\src\app\admin\components\admin-product-edit\admin-product-edit.component.ts, method setProduct)
    this.productService.getProduct(productId).toPromise().then(val => console.log(val));
 
 2. How to pass additional CSS class to a child element? The class should be applied not to the element itself, but to the specific input inside the child html.

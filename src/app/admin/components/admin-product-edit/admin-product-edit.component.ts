@@ -27,7 +27,6 @@ export class AdminProductEditComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private productService: ProductServiceService,
     private cartService: CartService,
     private snackBar: MatSnackBar
