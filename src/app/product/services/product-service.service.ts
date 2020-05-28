@@ -57,10 +57,7 @@ export class ProductServiceService {
   getProductTotalRemaining(productId: string): Observable<number> {
     return new Observable((obs: Subscriber<number>) =>
       this.getProductsInStock(productId).subscribe(
-        pis => {
-          obs.next(pis.reduce((sum, val) => sum += val.Remaining, 0));
-          obs.complete();
-        }
+        pis => obs.next(pis.reduce((sum, val) => sum += val.Remaining, 0))
       ));
   }
 
@@ -68,10 +65,7 @@ export class ProductServiceService {
     if (productId) {
       return new Observable((o: Subscriber<ProductInStock[]>) => {
         this.httpEmulator.subscribe(productInStock =>
-          {
-            o.next(productInStock.filter(pis => pis.Product.Id === productId));
-            o.complete();
-          });
+          o.next(productInStock.filter(pis => pis.Product.Id === productId)));
       });
     } else {
       return this.httpEmulator;
@@ -89,7 +83,6 @@ export class ProductServiceService {
         obs.next(
           productsInStock.find(pis => pis.Product.Id === productId)?.Product
         );
-        obs.complete();
       });
     });
   }
