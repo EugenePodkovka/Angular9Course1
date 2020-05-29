@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductServiceService } from '../../services/product-service.service';
-import { ProductInStock } from 'src/app/shared/interfaces/product-in-stock';
+import { ProductService } from '../../services/product.service';
 import { Product } from 'src/app/shared/interfaces/product';
 import { Observable } from 'rxjs';
 
@@ -10,10 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./product-list-component.component.scss']
 })
 export class ProductListComponentComponent implements OnInit {
-  productsInStock: Observable<ProductInStock[]>;
+  products: Observable<Product[]>;
 
   constructor(
-    private productServiceService: ProductServiceService
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -21,11 +20,11 @@ export class ProductListComponentComponent implements OnInit {
   }
 
   onProductPurchased(product: Product){
-    this.productServiceService.buyProduct(product);
+    this.productService.buyProduct(product);
   }
 
   private initializeProducts() {
-    this.productsInStock = this.productServiceService.getProductsInStock();
+    this.products = this.productService.getProducts();
   }
 
 }

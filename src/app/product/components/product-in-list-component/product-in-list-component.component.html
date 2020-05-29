@@ -1,12 +1,11 @@
 <mat-card class="mainBlock">
     <div class="rightPosition">
-        <app-add-to-cart-btn [product]="product" [isProductAvailable]="isProductAvailable">
-        </app-add-to-cart-btn>
+        <app-add-to-cart-btn [product]="product"></app-add-to-cart-btn>
     </div>
     <div class="inline productDescription">
         <div class="textBox">
             <a class="productLink" [routerLink]="['/product', product.Id]">{{product.Name}}</a>
-            Price="{{product.Price}}" Remaining="{{productRemaining}}"
+            Price="{{product.Price}}" Remaining="{{product.Remaining}}"
         </div>
     </div>
 </mat-card>

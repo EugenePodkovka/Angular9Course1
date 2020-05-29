@@ -1,7 +1,5 @@
 <app-card-main-nav-panel>
     <button mat-stroked-button color="accent" class="rightPosition" 
-        *ngIf="isAllProductDataLoaded"
-        [disabled]="this.isNewMode == null"
         (click)="onSaveClick()"
     >Save</button>
 </app-card-main-nav-panel>
@@ -19,6 +17,6 @@
     </mat-form-field>
     <mat-form-field class="verticalControl">
         <mat-label>Remaining</mat-label>
-        <input type="number" matInput [(ngModel)]="productTotalRemaining">
+        <input type="number" matInput [(ngModel)]="product.Remaining">
     </mat-form-field>
 </app-main-content-card>

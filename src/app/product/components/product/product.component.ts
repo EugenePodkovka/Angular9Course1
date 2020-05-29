@@ -18,7 +18,6 @@ export class ProductComponent implements OnInit {
   testValue: string;
   productIdUrlParam: string;
   public productSearchStatus: ProductSearchStatus = ProductSearchStatus.Undefined;
-  productTotalRemaining: number;
 
   constructor(
     private route: ActivatedRoute
@@ -31,7 +30,6 @@ export class ProductComponent implements OnInit {
       this.productSearchStatus = ProductSearchStatus.NotFound;
     } else {
       this.product = receivedProduct;
-      this.productTotalRemaining = this.route.snapshot.data.productData?.remaining;
       this.productSearchStatus = ProductSearchStatus.Found;
     }
   }
@@ -45,6 +43,6 @@ export class ProductComponent implements OnInit {
   }
 
   isProductAvailable() {
-    return this.productTotalRemaining > 0;
+    return this.product?.Remaining > 0;
   }
 }

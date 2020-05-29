@@ -9,8 +9,6 @@ import { Product } from '../../../shared/interfaces/product';
 })
 export class ProductInListComponentComponent {
   @Input() product: Product;
-  @Input() isProductAvailable: boolean;
-  @Input() productRemaining: number;
   @Output() productPurchased: EventEmitter<Product> = new EventEmitter<Product>();
 
   onBuy() {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LocalStorageService {
+  // TODO change to storing in constants
   keys = {
     purchasedProducts: 'PurchasedProducts',
     loginInfo: 'LoginInfo',

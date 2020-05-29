@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProductInStock } from 'src/app/shared/interfaces/product-in-stock';
-import { ProductServiceService } from 'src/app/product/services/product-service.service';
+import { ProductService } from 'src/app/product/services/product.service';
+import { Product } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-admin-products-list',
@@ -9,9 +9,9 @@ import { ProductServiceService } from 'src/app/product/services/product-service.
   styleUrls: ['./admin-products-list.component.scss']
 })
 export class AdminProductsListComponent implements OnInit {
-  productsInStock: Observable<ProductInStock[]>;
+  products: Observable<Product[]>;
   constructor(
-    private productService: ProductServiceService
+    private productService: ProductService
   ) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class AdminProductsListComponent implements OnInit {
   }
 
   private initializeProducts() {
-    this.productsInStock = this.productService.getProductsInStock();
+    this.products = this.productService.getProducts();
   }
 
 }
