@@ -12,7 +12,7 @@ Json server `npm install -g json-server`
 
 Run `git clone https://github.com/EugenePodkovka/Angular9Course1.git`
 Open the project folder
-Run `json-server --watch src/db/db.json`
+Run `json-server --watch src/db/db.json --id Id`
 The database emulator will be available by the URL `http://localhost:3000`
 Run `npm install`
 Run `ng serve`

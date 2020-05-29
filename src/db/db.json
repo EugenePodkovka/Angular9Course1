@@ -1,9 +1,9 @@
 {
   "application_info": [
     {
-      "id": "8f435147-fd11-4300-8a19-6d243a1a02da",
-      "title": "Angular9Course1",
-      "author": "Yevhen Podkovka"
+      "Id": "8f435147-fd11-4300-8a19-6d243a1a02da",
+      "Title": "Angular9Course1",
+      "Author": "Yevhen Podkovka"
     }
   ],
   "Product": [
@@ -26,6 +26,7 @@
       "Remaining": 2
     }
   ],
+  "Order": [],
   "Contact": [
     {
       "Id": "483e1a5b-d914-478a-97cb-d1bad2023421",
