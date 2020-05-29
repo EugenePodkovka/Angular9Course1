@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
-import { GuidHelperService } from 'src/app/shared/services/guid-helper/guid-helper.service';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { ProductInStock } from 'src/app/shared/interfaces/product-in-stock';
 import { Observable, Subscriber } from 'rxjs';
-import { LocalStorageService } from 'src/app/core/services';
-
+import { LocalStorageService, GuidHelperService } from 'src/app/shared/services';
 
 @Injectable({
   providedIn: 'root'

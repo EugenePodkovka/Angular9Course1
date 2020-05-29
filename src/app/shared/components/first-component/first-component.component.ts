@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { LocalStorageService, ConstantsService, csInstance, RandomStrLen, GeneratorFactory, GeneratorService } from 'src/app/core/services';
+import { LocalStorageService, ConstantsService, csInstance, RandomStrLen, GeneratorFactory, GeneratorService } from 'src/app/shared/services';
 
 enum ProductCategory{
   Toys,
