@@ -1,0 +1,9 @@
+{
+    "application_info": [
+      { "id": 1, "title": "Angular9Course1", "author": "Yevhen Podkovka" }
+    ],
+    "comments": [
+      { "id": 1, "body": "some comment", "postId": 1 }
+    ],
+    "profile": { "name": "typicode" }
+  }
