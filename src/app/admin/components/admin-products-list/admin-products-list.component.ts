@@ -18,6 +18,10 @@ export class AdminProductsListComponent implements OnInit {
     this.initializeProducts();
   }
 
+  onListChanged() {
+    this.initializeProducts();
+  }
+
   private initializeProducts() {
     this.products = this.productService.getProducts();
   }

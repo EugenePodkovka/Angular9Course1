@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { Observable, Subscriber, throwError } from 'rxjs';
-import { GuidHelperService, AppSettingsService } from 'src/app/shared/services';
-import { HttpClient } from '@angular/common/http';
+import { GuidHelperService, AppSettingsService, HttpClientService } from 'src/app/shared/services';
 import { map, mergeMap, switchMap, tap, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -14,13 +13,13 @@ export class ProductService {
   constructor(
     private cartService: CartService,
     private guidHelperService: GuidHelperService,
-    private http: HttpClient,
+    private httpService: HttpClientService,
     private appSettings: AppSettingsService
   ) { }
 
   getProducts(): Observable<Product[]> {
     return this.appSettings.get('serverURL').pipe(
-      switchMap(serverUrl => this.http.get<Product[]>(serverUrl + '/Product')),
+      switchMap(serverUrl => this.httpService.read<Product[]>(serverUrl + '/Product')),
       catchError(err => {
         console.error(err);
         return throwError(err);
@@ -46,11 +45,20 @@ export class ProductService {
   }
 
   updateProduct(product: Product) {
-    this.http.put('http://localhost:3000/Product/' + product.Id, product).subscribe();
+    this.appSettings.get('serverURL').pipe(
+      switchMap(serverUrl => this.httpService.update<Product>(serverUrl + '/Product/' + product.Id, product))
+    ).subscribe();
   }
 
   createProduct(product: Product) {
-    this.http.post('http://localhost:3000/Product', product).subscribe();
+    this.appSettings.get('serverURL').pipe(
+      switchMap(serverUrl => this.httpService.create<Product>(serverUrl + '/Product', product))
+    ).subscribe();
+  }
+
+  deleteProduct(product: Product) {
+    this.appSettings.get('serverURL').toPromise()
+      .then(serverUrl => this.httpService.delete<Product>(serverUrl + '/Product/' + product.Id));
   }
 
   getNewProduct() {
