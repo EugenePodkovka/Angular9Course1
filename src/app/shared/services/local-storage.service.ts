@@ -7,7 +7,8 @@ export class LocalStorageService {
     purchasedProducts: 'PurchasedProducts',
     loginInfo: 'LoginInfo',
     productsInDb: 'productsInDb',
-    orderClientData: 'OrderClientData'
+    orderClientData: 'OrderClientData',
+    appSettings: 'appSettings'
   };
 
   setItem(key: string, value: any) {
