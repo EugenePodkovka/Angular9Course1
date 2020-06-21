@@ -26,9 +26,10 @@ export class AdminProductInListComponent {
   }
 
   onRemoveClick() {
-    this.productService.deleteProduct(this.product);
-    this.listChanged.emit();
-    this.showDeleteCompletedPopup();
+    this.productService.deleteProduct(this.product, () => {
+      this.listChanged.emit();
+      this.showDeleteCompletedPopup();
+    });
   }
 
   showSaveCompletedPopup() {

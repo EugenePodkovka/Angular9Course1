@@ -56,9 +56,14 @@ export class ProductService {
     ).subscribe();
   }
 
-  deleteProduct(product: Product) {
+  deleteProduct(product: Product, callback: any = null) {
     this.appSettings.get('serverURL').toPromise()
-      .then(serverUrl => this.httpService.delete<Product>(serverUrl + '/Product/' + product.Id));
+      .then(serverUrl => this.httpService.delete<Product>(serverUrl + '/Product/' + product.Id))
+      .then(() => {
+        if (callback) {
+          callback.call(this);
+        }
+      });
   }
 
   getNewProduct() {
