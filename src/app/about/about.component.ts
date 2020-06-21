@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Optional } from '@angular/core';
-import { RandomStrLen, LocalStorageService, ConstantsService, csInstance, GeneratorFactory, GeneratorService } from '../core/services';
+import { RandomStrLen, ConstantsService, csInstance, GeneratorFactory, GeneratorService, LocalStorageService } from '../shared/services';
 
 @Component({
   selector: 'app-about',

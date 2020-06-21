@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
-import { ProductServiceService } from '../services/product-service.service';
+import { ProductService } from '../services/product.service';
 import { Product } from 'src/app/shared/interfaces/product';
 import { Observable } from 'rxjs';
 
@@ -11,19 +11,14 @@ import { Observable } from 'rxjs';
 export class ProductEditResolver implements Resolve<any> {
 
     constructor(
-        private productService: ProductServiceService
+        private productService: ProductService
     ) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return new Observable<any>(obs => {
             this.getProduct(route, (resultProduct) => {
-                this.getTotalRemaining(resultProduct, (resultRemaining) => {
-                    obs.next({
-                        product: resultProduct,
-                        remaining: resultRemaining
-                    });
-                    obs.complete();
-                });
+                obs.next({ product: resultProduct });
+                obs.complete();
             });
         });
 
@@ -34,15 +29,5 @@ export class ProductEditResolver implements Resolve<any> {
         return this.productService.getProduct(route.paramMap.get('id')).subscribe((p) => {
             callback?.call(this, p);
         });
-    }
-
-    getTotalRemaining(p: Product, callback?: (r: number) => any) {
-        if (p?.Id) {
-            this.productService.getProductTotalRemaining(p.Id).subscribe((totalRemaining) => {
-                callback?.call(this, totalRemaining);
-            });
-        } else {
-            callback?.call(this);
-        }
     }
 }

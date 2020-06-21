@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Order } from 'src/app/shared/interfaces/order';
-import { LocalStorageService } from 'src/app/core/services';
-import { GuidHelperService } from 'src/app/shared/services/guid-helper/guid-helper.service';
+import { GuidHelperService, LocalStorageService } from 'src/app/shared/services';
 
 @Injectable({
   providedIn: 'root'

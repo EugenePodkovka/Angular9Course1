@@ -2,5 +2,5 @@
     color="accent" 
     *ngIf="isProductFound()"
     (click)="onBuyClick()" 
-    [disabled]="!isProductAvailable"
+    [disabled]="!isProductAvailable()"
     class="rightPosition">Add to cart</button>

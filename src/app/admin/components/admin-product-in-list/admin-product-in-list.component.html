@@ -1,5 +1,8 @@
 <mat-card class="mainBlock">
     <div class="rightPosition">
+        <button mat-stroked-button color="accent" class="removeBtn" (click)="onRemoveClick()">Remove</button>
+    </div>
+    <div class="rightPosition">
         <button mat-stroked-button color="accent" class="saveBtn" (click)="onSaveClick()">Save</button>
     </div>
     <div class="inline">
@@ -14,7 +17,7 @@
         </mat-form-field>
         <mat-form-field class="verticalControl">
             <mat-label>Remaining</mat-label>
-            <input type="number" matInput [(ngModel)]="productRemaining">
+            <input type="number" matInput [(ngModel)]="product.Remaining">
         </mat-form-field>
     </div>
 </mat-card>

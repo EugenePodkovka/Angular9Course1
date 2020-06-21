@@ -4,12 +4,12 @@
     >Add</button>
 </app-card-main-nav-panel>
 <app-main-content-card><p>Admin product list</p></app-main-content-card>
-<mat-list *ngFor="let productInStock of productsInStock|async">
+<mat-list *ngFor="let product of products|async">
     <mat-list-item class="productLine">
         <app-admin-product-in-list 
             class="main-product-in-list"
-            [product]="productInStock.Product"
-            [productRemaining]="productInStock.Remaining"
+            [product]="product"
+            (listChanged)="onListChanged()"
         ></app-admin-product-in-list>
     </mat-list-item>
 </mat-list>

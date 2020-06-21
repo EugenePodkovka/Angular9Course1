@@ -1,0 +1,56 @@
+{
+    "application_info": [
+      {
+        "Id": "8f435147-fd11-4300-8a19-6d243a1a02da",
+        "Title": "Angular9Course1",
+        "Author": "Yevhen Podkovka"
+      }
+    ],
+    "Product": [
+      {
+        "Id": "E7FF9EB0-AAF0-A99C-4422-5A09A4901463",
+        "Name": "Product0",
+        "Price": 10,
+        "Remaining": 0
+      },
+      {
+        "Id": "CBBFBACF-EAE5-09D6-5564-C5F508B8824F",
+        "Name": "Product1",
+        "Price": 200,
+        "Remaining": 1
+      },
+      {
+        "Id": "68B5FDB9-5A53-1AD4-97F8-07662D51AD58",
+        "Name": "Product2",
+        "Price": 100,
+        "Remaining": 2
+      }
+    ],
+    "Contact": [
+      {
+        "Id": "483e1a5b-d914-478a-97cb-d1bad2023421",
+        "Name": "Admin",
+        "Phone": "011-123-12-12",
+        "Email": "adminEmail@gmail.com"
+      }
+    ],
+    "SysAdminUser": [
+      {
+        "Id": "32b1ec7a-1d66-4d3a-9c8c-3ae2f21c30d8",
+        "ContactId": "483e1a5b-d914-478a-97cb-d1bad2023421"
+      }
+    ],
+    "SysRole": [
+      {
+        "Id": "69f22235-ecfb-498e-a363-a7fcef6b8fff",
+        "Name": "System administrator"
+      }
+    ],
+    "SysAdminUserInRole": [
+      {
+        "Id": "e172a125-dbfd-4f17-ad50-a702365bba97",
+        "SysAdminUserId": "32b1ec7a-1d66-4d3a-9c8c-3ae2f21c30d8",
+        "SysRoleId": "69f22235-ecfb-498e-a363-a7fcef6b8fff"
+      }
+    ]
+  }

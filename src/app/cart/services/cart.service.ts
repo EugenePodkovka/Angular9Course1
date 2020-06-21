@@ -1,7 +1,7 @@
 import { Injectable, DoCheck } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
 import { PurchasedProduct } from '../../shared/interfaces/purchased-product';
-import { LocalStorageService } from 'src/app/core/services';
+import { LocalStorageService } from 'src/app/shared/services';
 
 @Injectable({
   providedIn: 'root'

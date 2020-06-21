@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageService } from 'src/app/core/services';
+import { LocalStorageService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-admin-main',

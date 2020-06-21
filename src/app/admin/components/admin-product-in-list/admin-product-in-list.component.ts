@@ -1,6 +1,6 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/shared/interfaces/product';
-import { ProductServiceService } from 'src/app/product/services/product-service.service';
+import { ProductService } from 'src/app/product/services/product.service';
 import { CartService } from 'src/app/cart/services/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -11,22 +11,35 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AdminProductInListComponent {
   @Input() product: Product;
-  @Input() productRemaining: number;
+  @Output() listChanged: EventEmitter<any> = new EventEmitter();
 
   constructor(
-    private productService: ProductServiceService,
+    private productService: ProductService,
     private cartService: CartService,
     private snackBar: MatSnackBar
   ) { }
 
   onSaveClick() {
-    this.productService.updateProductInStock(this.product, this.productRemaining);
+    this.productService.updateProduct(this.product);
     this.cartService.savePurchasedProducts();
     this.showSaveCompletedPopup();
   }
 
+  onRemoveClick() {
+    this.productService.deleteProduct(this.product, () => {
+      this.listChanged.emit();
+      this.showDeleteCompletedPopup();
+    });
+  }
+
   showSaveCompletedPopup() {
     this.snackBar.open('Product saved!', 'Save product', {
+      duration: 2000
+    });
+  }
+
+  showDeleteCompletedPopup() {
+    this.snackBar.open('Product deleted!', 'Delete product', {
       duration: 2000
     });
   }

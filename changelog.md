@@ -39,6 +39,16 @@
    * refresh the page
    * check the product list. all previously added/modified products are available. Feel free to buy them. The "Add to cart button" is active if the product remaining is positive. 
 
+"Task 6. HttpClient"
+   * The HttpClientService path: C:\Projects\Angular9Course1\src\app\shared\services\http-client.service.ts
+   * The AppSettingsService path: C:\Projects\Angular9Course1\src\app\shared\services\app-settings.service.ts
+   The workflow:
+   * Click "Login as Admin" on the main page.
+   * Click "Admin area"
+   * Click "Edit product catalog"
+   * Open prowser condole and "Remove" a product. The request time will appear.
+
+
 Questions
 1. why this does not work? (C:\Projects\Angular9Course1\src\app\admin\components\admin-product-edit\admin-product-edit.component.ts, method setProduct)
    this.productService.getProduct(productId).toPromise().then(val => console.log(val));

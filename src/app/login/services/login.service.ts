@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'src/app/core/services';
+import { LocalStorageService } from 'src/app/shared/services';
 import { Router } from '@angular/router';
 import { CurrentUser } from 'src/app/shared/classes/current-user';
 import { CurrentUserBase } from 'src/app/shared/global-variables/current-user';

@@ -1,14 +1,12 @@
 <app-card-main-nav-panel>
-    <app-add-to-cart-btn [product]="product" [isProductAvailable]="isProductAvailable()"></app-add-to-cart-btn>
+    <app-add-to-cart-btn [product]="product"></app-add-to-cart-btn>
 </app-card-main-nav-panel>
 <app-main-content-card *ngIf="isProductFound()">
     <p>ProductId = {{product.Id}}</p>
     <p>Name = {{product.Name}}</p>
     <p>Price = {{product.Price}}</p>
-    <p>Total remaining = {{productTotalRemaining}}</p>
+    <p>Total remaining = {{product.Remaining}}</p>
 </app-main-content-card>
 <app-main-content-card *ngIf="isProductNotFound()" [additionalStyles]="{'border': '1px solid #ff4081'}">
     <p>Product with Id="{{productIdUrlParam}}" not found.</p>
 </app-main-content-card>
-
-
