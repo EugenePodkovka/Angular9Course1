@@ -1,9 +1,9 @@
 <mat-card class="mainBlock">
     <div class="rightPosition">
-        <button mat-stroked-button color="accent" class="saveBtn" (click)="onSaveClick()">Save</button>
+        <button mat-stroked-button color="accent" class="removeBtn" (click)="onRemoveClick()">Remove</button>
     </div>
     <div class="rightPosition">
-        <button mat-stroked-button color="accent" class="removeBtn" (click)="onRemoveClick()">Remove</button>
+        <button mat-stroked-button color="accent" class="saveBtn" (click)="onSaveClick()">Save</button>
     </div>
     <div class="inline">
         <a class="productLink" [routerLink]="['/admin/product/edit', product.Id]">{{product.Name}}</a>
